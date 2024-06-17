@@ -1,0 +1,69 @@
+@startuml
+
+interface Sorter {
+    load();
+    sort();
+    getPlan();
+}
+
+class Monster{
+    int r, g, b;
+    Position position;
+
+    getMonsterByRank();
+    rank();
+    toString() ;
+    setPosition();
+    getPosition();
+    swapPosition()
+    getValue();
+}
+
+class Snake{
+    Snake snake;
+    Sorter sorter;
+
+    getSnake();
+    setSorter();
+    lineUp();
+    parsePlan();
+    execute();
+}
+
+class MixedSorter{
+    swap();
+    load();
+    sort();
+    getPlan();
+    quickSort();
+    insertSort();
+}
+
+class Line{
+    Position[] positions;
+
+    put();
+    get();
+    toString();
+    toArray();
+}
+
+class Position{
+    Monster monster;
+
+    setMonster();
+}
+
+class Scene{
+    main();
+}
+
+MixedSorter <|-- Sorter : implements
+Line o-- Position : has
+Snake o-- MixedSorter : has
+Snake *-- Snake : has
+Scene o-- Line : has
+Scene o-- Snake : has
+Position o-- Monster : has
+
+@enduml

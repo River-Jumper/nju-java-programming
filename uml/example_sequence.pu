@@ -1,0 +1,14 @@
+@startuml
+
+actor theGeezer
+collections line
+entity Gourd
+control BubbleSorter
+
+skinparam sequenceMessageAlign center
+
+line <- Gourd : 放入七个
+theGeezer -> BubbleSorter : 调用
+BubbleSorter -> line : 排序
+
+@enduml
