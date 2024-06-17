@@ -1,0 +1,45 @@
+@startuml
+
+class Substance
+
+class Creature {
+
+    int health
+    int attack
+    int defense
+
+    speakTo()
+    attack()
+    move()
+    laugh()
+    weep()
+}
+
+class Sword{
+    Creature owner
+    int attack
+    setOwner()
+}
+
+class MagicMirror{
+    int status
+    setStatus()
+}
+
+class Monster{
+    rollEyes()
+}
+
+class Human{
+    strike()
+}
+
+MagicMirror --|> Substance
+
+Sword --|> Substance
+
+Human --|> Creature
+
+Monster --|> Creature
+
+@enduml
