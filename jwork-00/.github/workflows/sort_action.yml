@@ -1,0 +1,14 @@
+name: sort-action
+run-name: sort_test
+on: [push]
+jobs:
+  sort_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: sort_test
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - run: java Sort.java 22 45 56 32 76 2 29 46 14
