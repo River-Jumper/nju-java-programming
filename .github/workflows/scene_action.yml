@@ -1,0 +1,20 @@
+name: scene-action
+run-name: scene_play
+on: [push]
+jobs:
+  scene_play:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: play
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - name: compile
+        run: javac scene/src/*.java
+      - name: run
+        run: |
+          cd scene/src/ &&
+          java Scene

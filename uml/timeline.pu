@@ -1,0 +1,60 @@
+' https://www.bilibili.com/video/BV1Fk4y1V7Lf?p=6&vd_source=d66d6ccdd7011d0fc85c17c90f8b980d
+' 7:00~8:04
+
+@startuml
+actor       三娃   as thirdChild
+actor       蛇精    as snake  #Black
+actor       蝎子精    as scorpion   #Purple
+entity      魔镜  as magicMirror  #Blue
+entity      刚柔阴阳剑  as sword  #Red
+
+skinparam sequenceMessageAlign center
+
+thirdChild -[#Red]> magicMirror: 撞碎
+
+scorpion -[#Gray]> magicMirror: 抱着哭道
+note left
+    呜呜呜，我的宝贝……
+end note
+
+snake -[#Red]>  thirdChild: 拿起魔镜碎片扔向
+thirdChild -[#Gray]> snake: 左臂挡过，大笑道
+note right
+    你们这些害人精，还不快投降！
+end note
+
+snake -[#Blue]> snake: 眼珠一转
+snake -[#Gray]> thirdChild: 大笑道
+note left
+    你凭着一副钢筋铁骨竟就如此夸口，
+    你可知道老娘的厉害！
+end note
+
+thirdChild -[#Gray]> snake: 大笑道
+note right
+    哈哈哈哈，你有什么本事，
+    就拿出来吧！
+end note
+
+snake -[#Gray]> thirdChild: 回应道
+note left
+    好！
+end note
+
+snake -[#Grey]> sword: 变出
+
+thirdChild -[#Gray]> snake: 大笑
+
+snake -[#Gray]> thirdChild: 疑惑道
+note left
+    哦？你难道不怕我这宝剑吗？
+end note
+
+thirdChild -[#Gray]> snake: 回应道
+note right
+    你干脆把所有的兵器都拿出来吧，
+    我还可以陪你玩玩。
+end note
+
+@enduml
+
