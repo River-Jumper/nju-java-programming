@@ -138,6 +138,9 @@ public class MazeWorldScreen implements Screen {
 
     @Override
     public Screen respondToUserInput(KeyEvent key) {
+        if (reachedExit) {
+            return this;
+        }
         int keyCode = key.getKeyCode();
         switch (keyCode) {
             case KeyEvent.VK_W: {
