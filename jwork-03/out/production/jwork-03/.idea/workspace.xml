@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8daa4dae-0b09-4460-92f9-261767b05e04" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/../jwork-00/.github/workflows/sort_action.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-00/.github/workflows/sort_action.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-00/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-00/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-02/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-02/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-02/example/Geezer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-02/example/Geezer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/BubbleSorter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/classloader/SteganographyClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/classloader/SteganographyClassLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/encoder/SteganographyEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/encoder/SteganographyEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/encoder/SteganographyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/encoder/SteganographyFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/resources/bubble.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;River-Jumper&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Hades-gsl/nju-java-programming.git&quot;,
+    &quot;accountId&quot;: &quot;376ba4ce-e84f-4a9b-81f8-d738d8f8ba8e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2jlc5iuUg8rftWhU4QRvAGg8ZXX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/class/advancedJava/nju-java-programming/jwork-03/example/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Scene.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.SteganographyFactory.executor&quot;: &quot;Run&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\class\advancedJava\nju-java-programming\jwork-03\example\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="example" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Scene">
+    <configuration name="Scene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.Scene" />
+      <module name="jwork-03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SteganographyFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.encoder.SteganographyFactory" />
+      <module name="jwork-03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.encoder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Scene" />
+        <item itemvalue="应用程序.SteganographyFactory" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="8daa4dae-0b09-4460-92f9-261767b05e04" name="更改" comment="" />
+      <created>1721964924335</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721964924335</updated>
+      <workItem from="1721964925095" duration="664000" />
+      <workItem from="1723182665757" duration="15571000" />
+      <workItem from="1723447589828" duration="1209000" />
+      <workItem from="1723511871886" duration="3848000" />
+      <workItem from="1723691047058" duration="652000" />
+      <workItem from="1723876593129" duration="4273000" />
+      <workItem from="1723951696549" duration="15841000" />
+      <workItem from="1724038888826" duration="6261000" />
+      <workItem from="1724051733001" duration="5530000" />
+      <workItem from="1724066457511" duration="1761000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
