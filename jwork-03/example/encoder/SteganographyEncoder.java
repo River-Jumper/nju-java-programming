@@ -23,6 +23,8 @@ public class SteganographyEncoder {
         this.bi = bufferedImage;
     }
 
+    // byte[]: len(4 bytes) + 字节码
+    // encode: hide byte[] into bufferedImage
     public BufferedImage encodeString(String message) throws IllegalArgumentException {
         if (message == null || message.length() == 0) {
             throw new IllegalArgumentException("Message can not be empty!");
@@ -40,22 +42,28 @@ public class SteganographyEncoder {
         return encode(bytes);
     }
 
+    //byte[]: fileNameSize(4 bytes) + fileSize(4 bytes) + 字节码
+    //return 字节码
     public byte[] decodeByteArray() throws DecodingException {
         byte[] bytes = decode();
         int nameSize = byteArrayToInt(Arrays.copyOfRange(bytes, 0, 4));
+        int fileSize = byteArrayToInt(Arrays.copyOfRange(bytes, 4, 8));
+
         if (nameSize <= 0 || nameSize > (bytes.length - 8)) {
             throw new DecodingException("NameSize", nameSize);
         }
-        int fileSize = byteArrayToInt(Arrays.copyOfRange(bytes, 4, 8));
         if (fileSize < 0 || fileSize > (bytes.length - 8)) {
             throw new DecodingException("DecodedFileSize", fileSize);
         }
         if (nameSize + fileSize > (bytes.length - 8)) {
             throw new DecodingException("NameSize and DecodedFileSize", nameSize + fileSize);
         }
+
         return Arrays.copyOfRange(bytes, 8 + nameSize, 8 + nameSize + fileSize);
     }
 
+    //byte[]: len(4 bytes) + 字节码
+    //return byte[] to String
     public String decodeString() {
         StringBuilder sb = new StringBuilder();
         byte[] decodedByteArray = decode();
@@ -70,6 +78,7 @@ public class SteganographyEncoder {
         return sb.toString();
     }
 
+    //byte[]: fileNameSize(4 bytes) + fileSize(4 bytes) + 字节码
     public BufferedImage encodeFile(File file) throws IOException {
         byte[] bytes = IOUtils.toByteArray(new FileInputStream(file));
         byte[] sizeBytes = intToByteArray(bytes.length);
@@ -90,6 +99,8 @@ public class SteganographyEncoder {
         return encode(finalBytes);
     }
 
+    //byte[]: fileNameSize(4 bytes) + fileSize(4 bytes) + 字节码
+    //return file that content byte
     public File decodeFile(String resultPath) throws DecodingException {
         byte[] bytes = decode();
         int nameSize = byteArrayToInt(Arrays.copyOfRange(bytes, 0, 4));
@@ -171,7 +182,9 @@ public class SteganographyEncoder {
         return bufferedImage;
     }
 
+    // one pixel to one byte
     private byte[] decode() {
+        //Alpha, Red, Green, Blue each occupy 8 bits in pixel
         int[] pixels = this.bi.getRGB(0, 0, this.bi.getWidth(), this.bi.getHeight(), null, 0, this.bi.getWidth());
         int maxNoOfBytes = getMaxNoOfBytes();
         byte[] result = new byte[maxNoOfBytes];
@@ -182,9 +195,23 @@ public class SteganographyEncoder {
 
         // TODO: Optimize this code to decode only needed number of bytes and not the
         // whole byte array
-        for (int i = 0; i < maxNoOfBytes; i++) {
+        //each loop in the for-loop convert a pixel to a byte
+        //my code
+        int nameSize = maxNoOfBytes;
+        int fileSize = maxNoOfBytes;
+        //
+        for (int i = 0; i < maxNoOfBytes && i < (8 + nameSize + fileSize); i++) {
             byte oneByte = 0;
+            //my code
+            if (i == 8) {
+                nameSize = byteArrayToInt(Arrays.copyOfRange(result, 0, 4));
+                fileSize = byteArrayToInt(Arrays.copyOfRange(result, 4, 8));
+            }
+            //
             while (charOffset < 8) {
+                //deal in the order of red, green and blue
+                //if bitsFromColor == 2, the whole while-loop deal in the order of this pixel: red, green, blue;
+                //next pixel: red
                 if (curColor < 0) {
                     curColor = 2;
                     curPix++;
@@ -195,6 +222,7 @@ public class SteganographyEncoder {
                 charOffset += bitsFromColor;
                 curColor--;
             }
+
             result[i] = oneByte;
             charOffset %= 8;
         }

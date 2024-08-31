@@ -2,7 +2,7 @@
 # J02
 
 请先编译示例代码并运行`Scene.main()`，运行以下命令获得运行结果的可视化：
-
+addByMe:必须要在MacOS或者linux下运行才可以看到颜色图片的变换
 ```bash
 java -jar asciianimator.jar -f result.txt -l false -c true -fps 3
 ```
@@ -24,6 +24,9 @@ java -jar asciianimator.jar -f result.txt -l false -c true -fps 3
 3. 实现至少两种排序算法，将小妖怪按其颜色值排序；
 4. 如示例代码一样将排序过程可视化；
 5. 在自己的`Readme.md`中画出相应类图，并添加可视化结果展示链接。
+```bash
+java -jar asciianimator.jar -f jumperResult.txt -l false -c false -fps 3
+```
 
 
 ## 任务三

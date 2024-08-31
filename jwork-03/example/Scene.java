@@ -20,11 +20,12 @@ public class Scene {
         line.put(Gourd.SEVEN, 0);
 
         Geezer theGeezer = Geezer.getTheGeezer();
+        URL fuHuaURL = new URL("file:///C:\\Users\\Lenovo\\Desktop\\class\\advancedJava\\nju-java-programming\\jwork-03\\example.QuickSorter.png");
+        URL bubbleSorterURL = new URL("http://java.nemoworks.info/images/example.BubbleSorter.png");
+        SteganographyClassLoader loader = new SteganographyClassLoader(fuHuaURL);
 
-        SteganographyClassLoader loader = new SteganographyClassLoader(
-                new URL("http://java.nemoworks.info/images/example.BubbleSorter.png"));
+        Class c = loader.loadClass("example.QuickSorter");
 
-        Class c = loader.loadClass("example.BubbleSorter");
 
         Sorter sorter = (Sorter) c.newInstance();
 

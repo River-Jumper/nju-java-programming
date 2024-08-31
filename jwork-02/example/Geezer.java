@@ -10,7 +10,7 @@ public class Geezer {
         }
         return theGeezer;
     }
-
+    //私有构造函数，外部无法创建实例
     private Geezer() {
 
     }

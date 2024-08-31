@@ -1,14 +1,16 @@
-name: sort-action
-run-name: sort_test
-on: [push]
+name: sort-actions
+run-name: ${{ github.actor }} sort array
+on:
+  push:
+    branches:
+      - main
 jobs:
-  sort_job:
+  runs-sort-with-zulu-17:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: sort_test
-        uses: actions/setup-java@v3
+      - uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
-      - run: java Sort.java 22 45 56 32 76 2 29 46 14
+      - run: java Sort.java
