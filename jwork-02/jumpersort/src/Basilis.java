@@ -24,7 +24,22 @@ public class Basilis {
         this.sorter = sorter;
     }
 
-    public String lineUp() {
+    //排成一行
+    public String lineUpToALine() {
+        if (line == null || sorter == null) {
+            return null;
+        }
+        StringBuilder log = new StringBuilder();
+        sorter.load(line.toArray());
+        String plan = sorter.sortAndGetPlan();
+        String[] steps = parsePlan(plan);
+
+        toALine(steps, log);
+
+        return log.toString();
+    }
+    //排成矩阵
+    public String lineUpToMatrix() {
         if (line == null || sorter == null) {
             return null;
         }

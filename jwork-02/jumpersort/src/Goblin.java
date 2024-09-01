@@ -12,6 +12,12 @@ public class Goblin implements Linable {
         this.b = b;
         this.rank = (int)(0.299 * r + 0.587 * g + 0.114 * b);
     }
+    public Goblin(int r, int g, int b, int rank) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.rank = rank;
+    }
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("000");

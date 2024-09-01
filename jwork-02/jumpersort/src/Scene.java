@@ -1,57 +1,117 @@
+import readc256.C256Reader;
+
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Scene {
-    static final int num = 256;
+    static int length;
+    static final int width = 16;
     public static void main(String[] args) throws IOException {
-        Random random = new Random();
-        Set<Color> colorSet = new HashSet<>();
-        while (colorSet.size() < num) {
-            int r = random.nextInt(0, 255);
-            int g = random.nextInt(0, 255);
-            int b = random.nextInt(0, 255);
-            Color color = new Color(r, g, b);
-            colorSet.add(color);
-        }
+        length = width * width;
 
-        Goblin[] goblins = new Goblin[num];
-        int indexGoblins = 0;
-        for (Color color : colorSet) {
-            goblins[indexGoblins] = new Goblin(color.r, color.g, color.b);
-            indexGoblins++;
-        }
-
-        Line line = new Line(num);
+        //Goblin, Line and Basilis
+        Goblin[] goblins = makeGoblinLine();
+        Line line = new Line(length);
         for (Goblin goblin : goblins) {
             line.putIntoLine(goblin);
         }
-
-        Sorter sorter = new QuickSort();
-
         Basilis theBasilis = Basilis.getTheBasilis();
         theBasilis.setLine(line);
-        theBasilis.setSorter(sorter);
-        String log = theBasilis.lineUp();
+
+        //3 Sorter
+        Sorter quickSorter = new QuickSort();
+        Sorter matrixSorter = new MatrixSorter();
+        Sorter bubbleSorter = new BubbleSorter();
+
+        //4 sorterLog, 2 in line, 2 in matrix
+        //一次运行只能输出一种日志（因为每次的日志输出会导致goblins的顺序改变）
+        //String quickSorterLineLog = sortGoblinLine(quickSorter, theBasilis);
+        //String bubbleSorterLineLog = sortGoblinLine(bubbleSorter, theBasilis);
+        //String quickSorterMatrixLog = sortGoblinMatrix(quickSorter, theBasilis);
+        String matrixSorterMatrixLog = sortGoblinMatrix(matrixSorter, theBasilis);
+
 
         BufferedWriter writer;
         writer = new BufferedWriter(new FileWriter("jumperResult.txt"));
-        writer.write(log);
+        writer.write(matrixSorterMatrixLog);
         writer.flush();
         writer.close();
 
     }
-    private static class Color {
-        public int r;
-        public int g;
-        public int b;
-        public Color(int r, int g, int b) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
+
+    private static String sortGoblinLine(Sorter sorter, Basilis theBasilis) {
+        theBasilis.setSorter(sorter);
+        String log = theBasilis.lineUpToALine();
+
+        return log;
+    }
+
+    private static String sortGoblinMatrix(Sorter sorter, Basilis theBasilis) {
+        theBasilis.setSorter(sorter);
+        String log = theBasilis.lineUpToMatrix();
+
+        return log;
+    }
+
+    private static Goblin[] makeGoblinLine() {
+        length = width * width;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int index = 0; index < length; index++) {
+            arrayList.add(index);
         }
+        Collections.shuffle(arrayList);
+        Color[] sortedColor = makeSortedColors(width);
+
+        Goblin[] goblinsLine = new Goblin[length];
+
+        for (int index = 0; index < length; index++) {
+            int rank = arrayList.get(index);
+            Color theColor = sortedColor[rank];
+            goblinsLine[index] = new Goblin(theColor.getRed(), theColor.getGreen(), theColor.getBlue(), rank);
+        }
+
+        return goblinsLine;
+    }
+
+    private static Goblin[][] makeGoblinMatrix() {
+        length = width * width;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (int index = 0; index < length; index++) {
+            arrayList.add(index);
+        }
+        Collections.shuffle(arrayList);
+        Color[] sortedColor = makeSortedColors(width);
+
+        Goblin[][] goblinsMatrix = new Goblin[width][width];
+
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < width; x++) {
+                int rank = arrayList.get(16 * y + x);
+                Color theColor = sortedColor[rank];
+                goblinsMatrix[y][x] = new Goblin(theColor.getRed(), theColor.getGreen(), theColor.getBlue(), rank);
+            }
+        }
+
+        return goblinsMatrix;
+    }
+
+    private static Color[] makeSortedColors(int width) {
+        assert (width <= 16);
+
+        C256Reader c256Reader = new C256Reader();
+        java.awt.Color[][] colors = c256Reader.getColors();
+
+        java.awt.Color[] sortedColors = new java.awt.Color[width * width];
+
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < width; x++) {
+                sortedColors[y * width + x] = colors[y][x];
+            }
+        }
+
+        return sortedColors;
     }
 }
