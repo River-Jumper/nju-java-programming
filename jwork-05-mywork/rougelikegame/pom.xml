@@ -99,6 +99,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- LibGDX Ashley ECS -->
+        <dependency>
+            <groupId>com.badlogicgames.ashley</groupId>
+            <artifactId>ashley</artifactId>
+            <version>1.7.3</version>
+        </dependency>
+
 
     </dependencies>
 
