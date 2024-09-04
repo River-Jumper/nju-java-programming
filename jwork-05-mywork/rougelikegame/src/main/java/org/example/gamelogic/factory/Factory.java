@@ -1,4 +1,7 @@
 package org.example.gamelogic.factory;
 
-public class Factory {
+import com.badlogic.ashley.core.Engine;
+
+public interface Factory {
+    public void setEngine(Engine engine);
 }
