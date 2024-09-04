@@ -3,6 +3,7 @@ package org.example.screen;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,11 +11,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import org.example.FinalClass;
+import org.example.GameConfig;
 import org.example.gamelogic.factory.EnemyFactory;
 import org.example.gamelogic.factory.PlayerFactory;
+import org.example.gamelogic.system.KeyboardInputSystem;
 import org.example.gamelogic.system.MovementSystem;
 import org.example.gamelogic.system.RenderSystem;
 
@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
         this.batch = new SpriteBatch();
         this.camera = new OrthographicCamera();
 
-        camera.setToOrtho(false, FinalClass.WIDTH, FinalClass.HEIGHT);
+        camera.setToOrtho(false, GameConfig.WIDTH, GameConfig.HEIGHT);
 
         Gdx.input.setInputProcessor(stage);
 
@@ -57,10 +57,11 @@ public class GameScreen implements Screen {
         playerFactory.setEngine(this.engine);
         enemyFactory.setEngine(this.engine);
 
-        playerFactory.make(0, FinalClass.HEIGHT-2 * FinalClass.PlayerRADIUS, 0, 0);
-        enemyFactory.make(0, 0, 30, 30);
+        playerFactory.make(0, GameConfig.HEIGHT-2 * GameConfig.PlayerRADIUS, 0, 0);
+        enemyFactory.make(0, 0, GameConfig.EnemyMAXSPEED, GameConfig.EnemyMAXSPEED);
 
         //system in engine
+        engine.addSystem(new KeyboardInputSystem());
         engine.addSystem(new MovementSystem());
         engine.addSystem(new RenderSystem(this.batch));
 

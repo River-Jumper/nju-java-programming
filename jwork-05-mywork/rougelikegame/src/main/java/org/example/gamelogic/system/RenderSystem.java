@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.example.FinalClass;
+import org.example.GameConfig;
 import org.example.gamelogic.component.EnemyComponent;
 import org.example.gamelogic.component.ImageComponent;
 import org.example.gamelogic.component.PlayerComponent;
@@ -32,13 +32,13 @@ public class RenderSystem extends IteratingSystem {
         PositionComponent position = entity.getComponent(PositionComponent.class);
 
         if (entity.getComponent(PlayerComponent.class) != null) {
-            this.batch.draw(texture, position.x, position.y, 2 * FinalClass.PlayerRADIUS, 2 * FinalClass.PlayerRADIUS);
+            this.batch.draw(texture, position.x, position.y, 2 * GameConfig.PlayerRADIUS, 2 * GameConfig.PlayerRADIUS);
         }
         else if (entity.getComponent(EnemyComponent.class) != null) {
-            this.batch.draw(texture, position.x, position.y, 2 * FinalClass.EnemyRADIUS, 2 * FinalClass.EnemyRADIUS);
+            this.batch.draw(texture, position.x, position.y, 2 * GameConfig.EnemyRADIUS, 2 * GameConfig.EnemyRADIUS);
         }
         else {
-            this.batch.draw(texture, position.x, position.y, 2 * FinalClass.DefaultRADIUS, 2 * FinalClass.DefaultRADIUS);
+            this.batch.draw(texture, position.x, position.y, 2 * GameConfig.DefaultRADIUS, 2 * GameConfig.DefaultRADIUS);
         }
 
     }

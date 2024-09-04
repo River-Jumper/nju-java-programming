@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import org.example.FinalClass;
+import org.example.GameConfig;
 import org.example.gamelogic.component.*;
 
 public class EnemyFactory implements Factory{
@@ -22,7 +22,7 @@ public class EnemyFactory implements Factory{
         enemy.add(new PositionComponent(positionX, positionY));
         enemy.add(new ImageComponent(enemyTexture));
         enemy.add(new MovableComponent(speedX, speedY));
-        enemy.add(new CollisionComponent(FinalClass.PlayerRADIUS));
+        enemy.add(new CollisionComponent(GameConfig.PlayerRADIUS));
 
         this.engine.addEntity(enemy);
     }

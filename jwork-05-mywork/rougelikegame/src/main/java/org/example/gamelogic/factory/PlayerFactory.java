@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import org.example.FinalClass;
+import org.example.GameConfig;
 import org.example.gamelogic.component.*;
 
 public class PlayerFactory implements Factory {
@@ -22,7 +22,8 @@ public class PlayerFactory implements Factory {
         player.add(new PositionComponent(positionX, positionY));
         player.add(new ImageComponent(playerTexture));
         player.add(new MovableComponent(speedX, speedY));
-        player.add(new CollisionComponent(FinalClass.PlayerRADIUS));
+        player.add(new CollisionComponent(GameConfig.PlayerRADIUS));
+        player.add(new KeyboardInputComponent());
 
         this.engine.addEntity(player);
     }
