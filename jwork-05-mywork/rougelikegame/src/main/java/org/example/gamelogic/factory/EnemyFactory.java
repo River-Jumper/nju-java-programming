@@ -22,7 +22,7 @@ public class EnemyFactory implements Factory{
         enemy.add(new PositionComponent(positionX, positionY));
         enemy.add(new ImageComponent(enemyTexture));
         enemy.add(new MovableComponent(speedX, speedY));
-        enemy.add(new CollisionComponent(GameConfig.PlayerRADIUS));
+        enemy.add(new CollisionComponent(GameConfig.EnemyRADIUS));
 
         this.engine.addEntity(enemy);
     }

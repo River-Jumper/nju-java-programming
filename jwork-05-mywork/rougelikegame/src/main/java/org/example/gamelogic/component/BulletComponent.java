@@ -1,4 +1,6 @@
 package org.example.gamelogic.component;
 
-public class BulletComponent {
+import com.badlogic.ashley.core.Component;
+
+public class BulletComponent implements Component {
 }

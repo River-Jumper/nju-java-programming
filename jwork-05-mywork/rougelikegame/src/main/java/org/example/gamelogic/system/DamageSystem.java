@@ -10,7 +10,7 @@ import org.example.gamelogic.component.HealthComponent;
 import java.util.Set;
 
 public class DamageSystem extends IteratingSystem {
-    public DamageSystem(Family family) {
+    public DamageSystem() {
         super(Family.all(CollisionComponent.class, HealthComponent.class).get());
     }
 

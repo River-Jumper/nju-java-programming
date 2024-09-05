@@ -23,7 +23,8 @@ public class PlayerFactory implements Factory {
         player.add(new ImageComponent(playerTexture));
         player.add(new MovableComponent(speedX, speedY));
         player.add(new CollisionComponent(GameConfig.PlayerRADIUS));
-        player.add(new KeyboardInputComponent());
+        player.add(new InputMoveComponent());
+        player.add(new ShootingComponent(GameConfig.ShootINTERVAL, GameConfig.ShootINTERVAL));
 
         this.engine.addEntity(player);
     }

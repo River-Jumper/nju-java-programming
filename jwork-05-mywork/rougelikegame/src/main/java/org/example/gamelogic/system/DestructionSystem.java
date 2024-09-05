@@ -12,6 +12,6 @@ public class DestructionSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-
+        getEngine().removeEntity(entity);
     }
 }

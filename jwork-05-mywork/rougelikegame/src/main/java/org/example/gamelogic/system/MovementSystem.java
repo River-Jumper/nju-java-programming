@@ -4,9 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import org.example.GameConfig;
-import org.example.gamelogic.component.CollisionComponent;
-import org.example.gamelogic.component.MovableComponent;
-import org.example.gamelogic.component.PositionComponent;
+import org.example.gamelogic.component.*;
 
 
 public class MovementSystem extends IteratingSystem {
@@ -24,22 +22,31 @@ public class MovementSystem extends IteratingSystem {
         position.x += deltaTime * movableComponent.xSpeed;
         position.y += deltaTime * movableComponent.ySpeed;
 
-        edgeDetection(position, radius);
+        if (edgeDetection(position, radius) && entity.getComponent(BulletComponent.class) != null) {
+            entity.add(new DestructionComponent());
+        }
     }
 
-    private void edgeDetection(PositionComponent position, int radius) {
+    private boolean edgeDetection(PositionComponent position, int radius) {
+        boolean hitEdge = false;
         if (position.x < 0) {
             position.x = 0;
+            hitEdge = true;
         }
         if (position.y < 0) {
             position.y = 0;
+            hitEdge = true;
         }
         if (position.x > GameConfig.WIDTH - 2 * radius) {
             position.x = GameConfig.WIDTH - 2 * radius;
+            hitEdge = true;
         }
         if (position.y > GameConfig.HEIGHT - 2 * radius) {
             position.y = GameConfig.HEIGHT - 2 * radius;
+            hitEdge = true;
         }
+
+        return hitEdge;
     }
 
 }

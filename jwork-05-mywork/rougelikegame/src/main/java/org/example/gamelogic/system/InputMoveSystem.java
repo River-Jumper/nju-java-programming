@@ -6,36 +6,38 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import org.example.GameConfig;
-import org.example.gamelogic.component.KeyboardInputComponent;
+import org.example.gamelogic.component.InputMoveComponent;
 import org.example.gamelogic.component.MovableComponent;
 import org.example.gamelogic.component.PlayerComponent;
 
-public class KeyboardInputSystem extends IteratingSystem {
-    public KeyboardInputSystem() {
-        super(Family.all(KeyboardInputComponent.class).get());
+public class InputMoveSystem extends IteratingSystem {
+    public InputMoveSystem() {
+        super(Family.all(InputMoveComponent.class).get());
     }
 
     @Override
     protected void processEntity(Entity entity, float v) {
         if (entity.getComponent(PlayerComponent.class) != null) {
             MovableComponent playSpeed = entity.getComponent(MovableComponent.class);
-            //press W
-            if (moveUp() || moveDown() || moveLeft() || moveRight()) {
+            if (moveUp() || moveDown()) {
                 if (moveUp()) {
                     playSpeed.ySpeed = GameConfig.PlayMAXSPEED;
-                }
-                if (moveDown()) {
+                } else if (moveDown()) {
                     playSpeed.ySpeed = -(GameConfig.PlayMAXSPEED);
-                }
-                if (moveRight()) {
-                    playSpeed.xSpeed = GameConfig.PlayMAXSPEED;
-                }
-                if (moveLeft()) {
-                    playSpeed.xSpeed = -(GameConfig.PlayMAXSPEED);
                 }
             }
             else {
                 playSpeed.ySpeed = 0;
+            }
+            if (moveLeft() || moveRight()) {
+                if (moveRight()) {
+                    playSpeed.xSpeed = GameConfig.PlayMAXSPEED;
+                }
+                else if (moveLeft()) {
+                    playSpeed.xSpeed = -(GameConfig.PlayMAXSPEED);
+                }
+            }
+            else {
                 playSpeed.xSpeed = 0;
             }
         }
