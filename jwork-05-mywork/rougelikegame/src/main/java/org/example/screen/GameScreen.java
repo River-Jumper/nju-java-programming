@@ -64,10 +64,14 @@ public class GameScreen implements Screen {
         enemyFactory.make(GameConfig.WIDTH - 2 * GameConfig.EnemyRADIUS, 0, 0, 0);
 
         //system in engine
+        engine.addSystem(new CollisionDetectionSystem());
         engine.addSystem(new InputMoveSystem());
         engine.addSystem(new RandomMoveSystem());
         engine.addSystem(new TargetMoveSystem());
         engine.addSystem(new InputShootSystem(bulletFactory, this.camera));
+        engine.addSystem(new CollisionRespondSystem());
+        engine.addSystem(new BulletCollisionSystem());
+
         engine.addSystem(new MovementSystem());
         engine.addSystem(new DestructionSystem());
 

@@ -8,6 +8,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import org.example.GameConfig;
+import org.example.gamelogic.component.CollisionComponent;
 import org.example.gamelogic.component.PositionComponent;
 import org.example.gamelogic.component.ShootingComponent;
 import org.example.gamelogic.factory.BulletFactory;
@@ -48,8 +49,12 @@ public class InputShootSystem extends IteratingSystem {
             int speedX = (int) ((deltaX / deltaZ) * GameConfig.BulletMAXSPEED);
             int speedY = (int) ((deltaY / deltaZ) * GameConfig.BulletMAXSPEED);
 
+            int radius = entity.getComponent(CollisionComponent.class).radius;
+            int positionX = (int) ((deltaX / deltaZ) * (radius + 10) + position.x) ;
+            int positionY = (int) ((deltaY / deltaZ) * (radius + 10) + position.y);
 
-            this.bulletFactory.make((int) position.x, (int) position.y, speedX, speedY);
+
+            this.bulletFactory.make(positionX, positionY, speedX, speedY);
 
             shootingComponent.currentInterval = shootingComponent.shootInterval;
         }
