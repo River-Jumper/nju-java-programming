@@ -5,17 +5,23 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 import org.example.GameConfig;
 import org.example.gamelogic.component.PositionComponent;
 import org.example.gamelogic.component.ShootingComponent;
 import org.example.gamelogic.factory.BulletFactory;
 
-public class InputShootSystem extends IteratingSystem {
-    private BulletFactory bulletFactory;
+import java.util.Vector;
 
-    public InputShootSystem(BulletFactory bulletFactory) {
+public class InputShootSystem extends IteratingSystem {
+    private final BulletFactory bulletFactory;
+    private final OrthographicCamera camera;
+
+    public InputShootSystem(BulletFactory bulletFactory, OrthographicCamera camera) {
         super(Family.all(ShootingComponent.class, PositionComponent.class).get());
         this.bulletFactory = bulletFactory;
+        this.camera = camera;
     }
 
     @Override
@@ -29,12 +35,18 @@ public class InputShootSystem extends IteratingSystem {
             int mouseX = Gdx.input.getX();
             int mouseY = Gdx.input.getY();
 
-            float deltaX = mouseX - position.x;
-            float deltaY = mouseY - position.y;
+            Vector3 screenCoords = new Vector3(mouseX, mouseY, 0);
+            Vector3 worldCoords = camera.unproject(screenCoords);
+
+            int worldX = (int) worldCoords.x;
+            int worldY = (int) worldCoords.y;
+
+            float deltaX = worldX - position.x;
+            float deltaY = worldY - position.y;
             float deltaZ = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-            int speedX = (int) ((GameConfig.BulletMAXSPEED / deltaZ) * deltaX);
-            int speedY = (int) ((GameConfig.BulletMAXSPEED / deltaZ) * deltaY);
+            int speedX = (int) ((deltaX / deltaZ) * GameConfig.BulletMAXSPEED);
+            int speedY = (int) ((deltaY / deltaZ) * GameConfig.BulletMAXSPEED);
 
 
             this.bulletFactory.make((int) position.x, (int) position.y, speedX, speedY);

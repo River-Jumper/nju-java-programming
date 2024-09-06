@@ -14,7 +14,7 @@ public class BulletFactory implements Factory{
         this.engine = engine;
     }
     public void make(int positionX, int positionY, int speedX, int speedY) {
-        Texture bulletTexture = new Texture(Gdx.files.internal("bullet/snow.png"));
+        Texture bulletTexture = new Texture(Gdx.files.internal("bullet/flower.png"));
 
         Entity bullet = new Entity();
         bullet.add(new BulletComponent());

@@ -23,6 +23,8 @@ public class EnemyFactory implements Factory{
         enemy.add(new ImageComponent(enemyTexture));
         enemy.add(new MovableComponent(speedX, speedY));
         enemy.add(new CollisionComponent(GameConfig.EnemyRADIUS));
+        enemy.add(new TargetMoveComponent(GameConfig.EnemyTargetDISTANCE));
+        enemy.add(new RandomMoveComponent(1, 0));
 
         this.engine.addEntity(enemy);
     }

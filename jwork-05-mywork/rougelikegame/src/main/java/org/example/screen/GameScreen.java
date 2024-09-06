@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import org.example.GameConfig;
 import org.example.gamelogic.factory.BulletFactory;
 import org.example.gamelogic.factory.EnemyFactory;
@@ -42,7 +44,7 @@ public class GameScreen implements Screen {
 
         //background
 
-        Texture backgroundTexture = new Texture(Gdx.files.internal("background/fuhua.png"));
+        Texture backgroundTexture = new Texture(Gdx.files.internal("background/background.jpg"));
         Image backgroundImage = new Image(backgroundTexture);
         backgroundImage.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
@@ -57,12 +59,15 @@ public class GameScreen implements Screen {
         enemyFactory.setEngine(this.engine);
         bulletFactory.setEngine(this.engine);
 
-        playerFactory.make(0, GameConfig.HEIGHT-2 * GameConfig.PlayerRADIUS, 0, 0);
+        playerFactory.make(0, GameConfig.HEIGHT - 2 * GameConfig.PlayerRADIUS, 0, 0);
         enemyFactory.make(0, 0, GameConfig.EnemyMAXSPEED, GameConfig.EnemyMAXSPEED);
+        enemyFactory.make(GameConfig.WIDTH - 2 * GameConfig.EnemyRADIUS, 0, 0, 0);
 
         //system in engine
         engine.addSystem(new InputMoveSystem());
-        engine.addSystem(new InputShootSystem(bulletFactory));
+        engine.addSystem(new RandomMoveSystem());
+        engine.addSystem(new TargetMoveSystem());
+        engine.addSystem(new InputShootSystem(bulletFactory, this.camera));
         engine.addSystem(new MovementSystem());
         engine.addSystem(new DestructionSystem());
 

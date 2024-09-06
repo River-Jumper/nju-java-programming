@@ -15,7 +15,7 @@ public class PlayerFactory implements Factory {
         this.engine = engine;
     }
     public void make(int positionX, int positionY, int speedX, int speedY) {
-        Texture playerTexture = new Texture(Gdx.files.internal("emoji/player.png"));
+        Texture playerTexture = new Texture(Gdx.files.internal("emoji/joker.png"));
 
         Entity player = new Entity();
         player.add(new PlayerComponent());
@@ -25,6 +25,7 @@ public class PlayerFactory implements Factory {
         player.add(new CollisionComponent(GameConfig.PlayerRADIUS));
         player.add(new InputMoveComponent());
         player.add(new ShootingComponent(GameConfig.ShootINTERVAL, GameConfig.ShootINTERVAL));
+        player.add(new TargetComponent());
 
         this.engine.addEntity(player);
     }
