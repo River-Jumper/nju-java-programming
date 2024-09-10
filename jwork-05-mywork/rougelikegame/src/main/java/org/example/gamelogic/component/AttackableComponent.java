@@ -1,8 +1,9 @@
 package org.example.gamelogic.component;
 
-import com.badlogic.ashley.core.Component;
 
-public class AttackableComponent implements Component {
+import java.awt.*;
+
+public class AttackableComponent {
     public int attack;
     public AttackableComponent(int attack) {
         this.attack = attack;

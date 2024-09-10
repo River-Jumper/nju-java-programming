@@ -1,8 +1,8 @@
 package org.example.gamelogic.component;
 
-import com.badlogic.ashley.core.Component;
 
-public class MovableComponent implements Component {
+
+public class MovableComponent{
     public float xSpeed;
     public float ySpeed;
 

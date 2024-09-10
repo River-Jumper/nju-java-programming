@@ -1,7 +1,6 @@
 package org.example.gamelogic.factory;
 
-import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import org.example.GameConfig;
@@ -15,6 +14,7 @@ public class BulletFactory implements Factory{
     }
     public void make(int positionX, int positionY, int speedX, int speedY) {
         Texture bulletTexture = new Texture(Gdx.files.internal("bullet/flower.png"));
+
 
         Entity bullet = new Entity();
         bullet.add(new BulletComponent());

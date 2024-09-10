@@ -3,19 +3,31 @@ package org.example.gamelogic.system;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Entity;
+import dev.dominion.ecs.api.Results;
 import org.example.gamelogic.component.*;
 
 import java.util.Set;
 
 //碰撞对于实体速度的影响
-public class CollisionRespondSystem extends IteratingSystem {
-    public CollisionRespondSystem() {
-        super(Family.all(MovableComponent.class, CollisionComponent.class).get());
+public class CollisionRespondSystem implements Runnable{
+    private final Dominion world;
+    public CollisionRespondSystem(Dominion world) {
+        this.world = world;
+        //super(Family.all(MovableComponent.class, CollisionComponent.class).get());
     }
 
     @Override
-    protected void processEntity(Entity entity, float deltaTime) {
-        CollisionComponent collisionComponent = entity.getComponent(CollisionComponent.class);
+    public void run() {
+        Results<Results.With2<MovableComponent, CollisionComponent>> results = world
+                .findEntitiesWith(MovableComponent.class, CollisionComponent.class);
+
+
+    }
+
+    protected void processEntity(Entity entity) {
+        CollisionComponent collisionComponent = entity.get(CollisionComponent.class);
         Set<Entity> collisionSet = collisionComponent.collisionEntities;
         for (Entity collisionEntity : collisionSet) {
             dealWithSpeed(entity, collisionEntity);
@@ -47,4 +59,6 @@ public class CollisionRespondSystem extends IteratingSystem {
         movement.xSpeed = newSpeedX;
         movement.ySpeed = newSpeedY;
     }
+
+
 }

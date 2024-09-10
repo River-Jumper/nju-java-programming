@@ -1,8 +1,7 @@
 package org.example.gamelogic.component;
 
-import com.badlogic.ashley.core.Component;
 
-public class TargetMoveComponent implements Component {
+public class TargetMoveComponent{
     public int targetX;
     public int targetY;
 

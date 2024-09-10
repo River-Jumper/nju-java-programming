@@ -1,29 +1,42 @@
 package org.example.gamelogic.system;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
-import org.example.gamelogic.component.BulletComponent;
-import org.example.gamelogic.component.CollisionComponent;
-import org.example.gamelogic.component.DestructionComponent;
-import org.example.gamelogic.component.PlayerComponent;
+import dev.dominion.ecs.api.Composition;
+import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Entity;
+import dev.dominion.ecs.api.Results;
+import org.example.gamelogic.component.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class BulletCollisionSystem extends IteratingSystem {
-    public BulletCollisionSystem() {
-        super(Family.all(BulletComponent.class, CollisionComponent.class).get());
+public class BulletCollisionSystem implements Runnable {
+    private final Dominion world;
+
+    public BulletCollisionSystem(Dominion world) {
+        this.world = world;
     }
 
     @Override
-    protected void processEntity(Entity entity, float v) {
-        CollisionComponent collisionComponent = entity.getComponent(CollisionComponent.class);
-        Set<Entity> collisionSet = collisionComponent.collisionEntities;
+    public void run() {
+        Results<Results.With3<PositionComponent, CollisionComponent, BulletComponent>> results = world
+                .findEntitiesWith(PositionComponent.class, CollisionComponent.class, BulletComponent.class);
+
+        for (Results.With3<PositionComponent, CollisionComponent, BulletComponent> result : results) {
+            Entity entity = result.entity();
+            processEntity(entity);
+        }
+    }
+
+    protected void processEntity(Entity entity) {
+        CollisionComponent collisionComponent = entity.get(CollisionComponent.class);
+        HashSet<Entity> collisionSet = collisionComponent.collisionEntities;
+
         for (Entity collisionEntity : collisionSet) {
-            if (collisionEntity.getComponent(PlayerComponent.class) == null) {
+            if (collisionEntity.get(PlayerComponent.class) == null) {
                 entity.add(new DestructionComponent());
                 break;
             }
         }
+
     }
 }

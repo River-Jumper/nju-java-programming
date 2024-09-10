@@ -1,47 +1,61 @@
 package org.example.gamelogic.system;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Circle;
+import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Entity;
+import dev.dominion.ecs.api.Results;
+import org.example.gamelogic.component.BulletComponent;
 import org.example.gamelogic.component.CollisionComponent;
+import org.example.gamelogic.component.PlayerComponent;
 import org.example.gamelogic.component.PositionComponent;
 
-public class CollisionDetectionSystem extends IteratingSystem {
-    public CollisionDetectionSystem() {
-        super(Family.all(PositionComponent.class, CollisionComponent.class).get());
+import java.util.HashSet;
+
+public class CollisionDetectionSystem implements Runnable {
+    private final Dominion world;
+
+    public CollisionDetectionSystem(Dominion world) {
+        this.world = world;
     }
 
     @Override
-    protected void processEntity(Entity entity, float deltaTime) {
-        PositionComponent positionComponent = entity.getComponent(PositionComponent.class);
-        CollisionComponent collisionComponent = entity.getComponent(CollisionComponent.class);
+    public void run() {
+        Results<Results.With2<PositionComponent, CollisionComponent>> entities = world
+                .findEntitiesWith(PositionComponent.class, CollisionComponent.class);
+
+        for (Results.With2<PositionComponent, CollisionComponent> result : entities) {
+            processEntity(result.entity(), entities);
+        }
+
+    }
+
+    protected void processEntity(Entity entity,
+                                 Results<Results.With2<PositionComponent, CollisionComponent>> results) {
+
         //在每一帧开始前将每个碰撞实体的碰撞列表清空，重新检测
-        collisionComponent.collisionEntities.clear();
+        entity.get(CollisionComponent.class).collisionEntities.clear();
 
-        ImmutableArray<Entity> allCollisionEntities = getEngine()
-                .getEntitiesFor(Family.all(PositionComponent.class, CollisionComponent.class).get());
-
-        for (Entity otherEntity : allCollisionEntities) {
+        for (Results.With2<PositionComponent, CollisionComponent> otherResult : results) {
+            Entity otherEntity = otherResult.entity();
             if (otherEntity == entity) {
                 continue;
             }
             else {
-                PositionComponent otherPositionComponent = otherEntity
-                        .getComponent(PositionComponent.class);
-                CollisionComponent otherCollisionComponent = otherEntity
-                        .getComponent(CollisionComponent.class);
+                PositionComponent position = entity.get(PositionComponent.class);
+                PositionComponent otherPositionComponent = otherEntity.get(PositionComponent.class);
+                CollisionComponent collisionComponent = entity.get(CollisionComponent.class);
+                CollisionComponent otherCollisionComponent = otherEntity.get(CollisionComponent.class);
 
-                Circle thisCircle = new Circle(positionComponent.x, positionComponent.y, collisionComponent.radius);
+                //circle collision detection
+                Circle thisCircle = new Circle(position.x, position.y, collisionComponent.radius);
                 Circle otherCircle = new Circle(otherPositionComponent.x, otherPositionComponent.y, collisionComponent.radius);
-                //碰撞检测的核心
+
                 if (thisCircle.overlaps(otherCircle)) {
                     collisionComponent.collisionEntities.add(otherEntity);
                 }
             }
         }
-
-
     }
+
+
 }

@@ -1,8 +1,8 @@
 package org.example.gamelogic.component;
 
-import com.badlogic.ashley.core.Component;
 
-public class PositionComponent implements Component {
+
+public class PositionComponent{
     public float x;
     public float y;
 
