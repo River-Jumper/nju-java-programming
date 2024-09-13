@@ -1,13 +1,20 @@
-/*
+
 package jumper.game.gamelogic.system.shoot;
+import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Entity;
+import dev.dominion.ecs.engine.IntEntity;
 import jumper.game.GameConfig;
 import jumper.game.gamelogic.component.collision.CollisionComponent;
+import jumper.game.gamelogic.component.health.AttackableComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.symbol.BulletComponent;
 import jumper.game.gamelogic.component.symbol.PlayerComponent;
 import jumper.game.gamelogic.component.move.PositionComponent;
 import jumper.game.gamelogic.component.shoot.ShootingComponent;
+import jumper.game.gamelogic.factory.BulletFactory;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
+import network.MouseState;
 
 @RequiredArgsConstructor
 public class InputShootSystem implements Runnable {
@@ -15,47 +22,36 @@ public class InputShootSystem implements Runnable {
 
     @Override
     public void run() {
-        context.world().findEntitiesWith(PlayerComponent.class, ShootingComponent.class, PositionComponent.class, CollisionComponent.class)
-                .forEach(result -> processEntity(result.entity()));
-    }
+        context.world().findCompositionsWith(PlayerComponent.class, ShootingComponent.class, PositionComponent.class, CollisionComponent.class)
+                .forEach(result -> {
+                    ShootingComponent shoot = result.comp2();
+                    PositionComponent position = result.comp3();
+                    int radius = result.comp4().radius;
+                    int clientID = result.comp1().clientID;
 
-    //Time get from timeComponent
-    protected void processEntity(Entity entity) {
-        ShootingComponent shootingComponent = entity.get(ShootingComponent.class);
-        PositionComponent position = entity.get(PositionComponent.class);
+                    shoot.shootInterval -= GameConfig.DELTA_TIME;
+                    MouseState mouseState = context.inputManager().getMouseState(clientID);
 
-        shootingComponent.currentInterval -= GameConfig.DELTA_TIME;
+                    if (shoot.shootInterval <= 0 && mouseState != null) {
+                        if (mouseState.isClick()) {
+                            int mouseX = (int) mouseState.x();
+                            int mouseY = (int) mouseState.y();
 
-        if (shoot() && shootingComponent.currentInterval <= 0) {
-            int mouseX = Gdx.input.getX();
-            int mouseY = Gdx.input.getY();
+                            float deltaX = mouseX - position.x;
+                            float deltaY = mouseY - position.y;
+                            float deltaZ = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-            Vector3 screenCoords = new Vector3(mouseX, mouseY, 0);
-            Vector3 worldCoords = context.camera().unproject(screenCoords);
+                            int speedX = (int) ((deltaX / deltaZ) * GameConfig.BULLET_MAX_SPEED);
+                            int speedY = (int) ((deltaY / deltaZ) * GameConfig.BULLET_MAX_SPEED);
 
-            int worldX = (int) worldCoords.x;
-            int worldY = (int) worldCoords.y;
+                            int positionX = (int) ((deltaX / deltaZ) * (radius + 10) + position.x);
+                            int positionY = (int) ((deltaY / deltaZ) * (radius + 10) + position.y);
 
-            float deltaX = worldX - position.x;
-            float deltaY = worldY - position.y;
-            float deltaZ = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-            int speedX = (int) ((deltaX / deltaZ) * GameConfig.BulletMAXSPEED);
-            int speedY = (int) ((deltaY / deltaZ) * GameConfig.BulletMAXSPEED);
-
-            int radius = entity.get(CollisionComponent.class).radius;
-            int positionX = (int) ((deltaX / deltaZ) * (radius + 10) + position.x) ;
-            int positionY = (int) ((deltaY / deltaZ) * (radius + 10) + position.y);
+                            BulletFactory.make(context.world(), positionX, positionY, speedX, speedY);
+                        }
+                    }
 
 
-            context.bulletFactory().make(positionX, positionY, speedX, speedY);
-
-            shootingComponent.currentInterval = shootingComponent.shootInterval;
-        }
-    }
-
-    private boolean shoot() {
-        return Gdx.input.isButtonPressed(Input.Buttons.LEFT);
+                });
     }
 }
-*/

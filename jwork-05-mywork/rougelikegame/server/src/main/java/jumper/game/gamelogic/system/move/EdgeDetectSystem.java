@@ -16,7 +16,7 @@ public class EdgeDetectSystem implements Runnable{
                 .forEach(result -> edgeDetection(result.comp1(), result.comp2().radius));
     }
 
-    private boolean edgeDetection(PositionComponent position, int radius) {
+    public static boolean edgeDetection(PositionComponent position, int radius) {
         boolean hitEdge = false;
         if (position.x < 0) {
             position.x = 0;

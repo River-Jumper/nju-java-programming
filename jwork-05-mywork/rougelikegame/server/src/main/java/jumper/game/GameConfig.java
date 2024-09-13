@@ -11,7 +11,7 @@ public class GameConfig {
 
     public static final int PLAY_MAX_SPEED = 30;
     public static final int ENEMY_MAX_SPEED = 20;
-    public static final int BULLET_MAX_SPEED = 150;
+    public static final int BULLET_MAX_SPEED = 200;
 
     public static final float PLAY_SHOOT_INTERVAL = 0.5F;
 
@@ -19,4 +19,7 @@ public class GameConfig {
 
     //deltaTime
     public static final float DELTA_TIME = (float) 1 / 60;
+
+    //attack
+    public static final int BULLET_ATTACK = 1;
 }

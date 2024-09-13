@@ -9,6 +9,8 @@ import jumper.game.gamelogic.component.move.PositionComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 
+import static jumper.game.gamelogic.system.move.EdgeDetectSystem.edgeDetection;
+
 @RequiredArgsConstructor
 public class BulletEdgeDetectSystem implements Runnable{
     private final SystemContext context;
@@ -21,7 +23,7 @@ public class BulletEdgeDetectSystem implements Runnable{
                     }
                 });
     }
-
+/*
     private boolean edgeDetection(PositionComponent position, int radius) {
         boolean hitEdge = false;
         if (position.x < 0) {
@@ -43,4 +45,6 @@ public class BulletEdgeDetectSystem implements Runnable{
 
         return hitEdge;
     }
+    */
+
 }
