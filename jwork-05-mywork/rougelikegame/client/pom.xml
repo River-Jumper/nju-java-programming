@@ -21,6 +21,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
@@ -58,6 +65,18 @@
             <artifactId>gdx-backend-headless</artifactId>
             <version>${libgdx.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.EsotericSoftware</groupId>
+            <artifactId>kryonetty</artifactId>
+            <version>master-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>5.6.0</version>
         </dependency>
 
     </dependencies>

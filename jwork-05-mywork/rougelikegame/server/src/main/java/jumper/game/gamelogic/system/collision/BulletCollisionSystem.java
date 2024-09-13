@@ -1,13 +1,13 @@
 package jumper.game.gamelogic.system.collision;
 
 import dev.dominion.ecs.api.Entity;
-import jumper.game.gamelogic.component.BulletComponent;
-import jumper.game.gamelogic.component.DestructionComponent;
+import jumper.game.gamelogic.component.symbol.BulletComponent;
+import jumper.game.gamelogic.component.destruction.DestructionComponent;
 import jumper.game.gamelogic.component.singleton.CollisionEventManager;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 
-import static jumper.game.SingletonManager.SingletonName.COLLISION_MESSAGE;
+import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
 
 @RequiredArgsConstructor

@@ -1,14 +1,13 @@
-
-package org.example.gamelogic.system.shoot;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector3;
+/*
+package jumper.game.gamelogic.system.shoot;
 import dev.dominion.ecs.api.Entity;
+import jumper.game.GameConfig;
+import jumper.game.gamelogic.component.collision.CollisionComponent;
+import jumper.game.gamelogic.component.symbol.PlayerComponent;
+import jumper.game.gamelogic.component.move.PositionComponent;
+import jumper.game.gamelogic.component.shoot.ShootingComponent;
+import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
-import org.example.GameConfig;
-import org.example.gamelogic.component.*;
-
-import org.example.gamelogic.system.SystemContext;
 
 @RequiredArgsConstructor
 public class InputShootSystem implements Runnable {
@@ -25,7 +24,7 @@ public class InputShootSystem implements Runnable {
         ShootingComponent shootingComponent = entity.get(ShootingComponent.class);
         PositionComponent position = entity.get(PositionComponent.class);
 
-        shootingComponent.currentInterval -= GameConfig.deltaTime;
+        shootingComponent.currentInterval -= GameConfig.DELTA_TIME;
 
         if (shoot() && shootingComponent.currentInterval <= 0) {
             int mouseX = Gdx.input.getX();
@@ -59,3 +58,4 @@ public class InputShootSystem implements Runnable {
         return Gdx.input.isButtonPressed(Input.Buttons.LEFT);
     }
 }
+*/

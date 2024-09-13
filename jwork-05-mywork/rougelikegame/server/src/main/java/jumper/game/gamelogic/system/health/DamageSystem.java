@@ -1,13 +1,10 @@
 package jumper.game.gamelogic.system.health;
 
 
-import jumper.game.gamelogic.component.DamageComponent;
-import jumper.game.gamelogic.component.HealthComponent;
+import jumper.game.gamelogic.component.health.DamageComponent;
+import jumper.game.gamelogic.component.health.HealthComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
-
-
-import java.util.Set;
 
 @RequiredArgsConstructor
 public class DamageSystem implements Runnable{

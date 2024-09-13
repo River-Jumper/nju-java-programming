@@ -1,11 +1,9 @@
-package jumper.game.gamelogic.component;
+package jumper.game.gamelogic.component.collision;
 
 
 import dev.dominion.ecs.api.Entity;
-import dev.dominion.ecs.api.Results;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class CollisionComponent{
     public int radius;

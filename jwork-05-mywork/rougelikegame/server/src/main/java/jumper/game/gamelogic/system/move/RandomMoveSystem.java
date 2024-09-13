@@ -1,8 +1,8 @@
 
 package jumper.game.gamelogic.system.move;
 import jumper.game.GameConfig;
-import jumper.game.gamelogic.component.MovableComponent;
-import jumper.game.gamelogic.component.RandomMoveComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.move.RandomMoveComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 

@@ -1,3 +1,4 @@
+/*
 import com.badlogic.gdx.Game;
 import org.example.screen.GameScreen;
 
@@ -7,3 +8,4 @@ public class MyGame extends Game {
         setScreen(new GameScreen(this));
     }
 }
+*/

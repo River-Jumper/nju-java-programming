@@ -1,10 +1,9 @@
 package jumper.game.gamelogic.system.move;
 
-import dev.dominion.ecs.api.Entity;
-import jumper.game.gamelogic.component.MovableComponent;
-import jumper.game.gamelogic.component.PositionComponent;
-import jumper.game.gamelogic.component.TargetComponent;
-import jumper.game.gamelogic.component.TargetMoveComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.move.PositionComponent;
+import jumper.game.gamelogic.component.move.TargetComponent;
+import jumper.game.gamelogic.component.move.TargetMoveComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 

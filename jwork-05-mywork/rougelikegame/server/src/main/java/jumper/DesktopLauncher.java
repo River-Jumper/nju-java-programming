@@ -1,3 +1,4 @@
+/*
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import org.example.GameConfig;
@@ -14,3 +15,4 @@ public class DesktopLauncher {
         new Lwjgl3Application(new MyGame(), config);
     }
 }
+*/

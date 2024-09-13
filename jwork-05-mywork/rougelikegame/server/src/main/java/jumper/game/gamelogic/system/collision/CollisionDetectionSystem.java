@@ -1,11 +1,18 @@
 package jumper.game.gamelogic.system.collision;
 
 import dev.dominion.ecs.api.Entity;
+import jumper.game.gamelogic.component.collision.CollisionComponent;
+import jumper.game.gamelogic.component.move.PositionComponent;
+import jumper.game.gamelogic.component.singleton.CollisionEventManager;
+import jumper.game.gamelogic.system.SystemContext;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
 
 @RequiredArgsConstructor
@@ -36,6 +43,19 @@ public class CollisionDetectionSystem implements Runnable {
                 }
             }
             collidedEntities.add(result.entity());
+        }
+    }
+
+    @AllArgsConstructor
+    public static class Circle {
+        public float x;
+        public float y;
+        public int radius;
+        public boolean overlaps(Circle other) {
+            float deltaX = this.x - other.x;
+            float deltaY = this.y - other.y;
+            float distance = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            return distance <= (this.radius + other.radius);
         }
     }
 }

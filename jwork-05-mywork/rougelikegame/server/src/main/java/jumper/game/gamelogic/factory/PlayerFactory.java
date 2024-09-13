@@ -1,11 +1,5 @@
-package org.example.gamelogic.factory;
-
-import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import org.example.GameConfig;
-import org.example.gamelogic.component.*;
+/*
+package jumper.game.gamelogic.factory;
 
 public class PlayerFactory implements Factory {
     private Engine engine;
@@ -30,3 +24,4 @@ public class PlayerFactory implements Factory {
         this.engine.addEntity(player);
     }
 }
+*/

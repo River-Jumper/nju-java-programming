@@ -1,3 +1,4 @@
+/*
 package org.example.gamelogic.factory;
 
 import com.badlogic.ashley.core.Engine;
@@ -29,3 +30,4 @@ public class EnemyFactory implements Factory{
         this.engine.addEntity(enemy);
     }
 }
+*/

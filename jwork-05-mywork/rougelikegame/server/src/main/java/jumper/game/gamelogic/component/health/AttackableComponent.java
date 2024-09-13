@@ -1,7 +1,5 @@
-package jumper.game.gamelogic.component;
+package jumper.game.gamelogic.component.health;
 
-
-import java.awt.*;
 
 public class AttackableComponent {
     public int attack;

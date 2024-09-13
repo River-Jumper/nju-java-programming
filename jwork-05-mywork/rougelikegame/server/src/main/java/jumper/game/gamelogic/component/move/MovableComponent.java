@@ -1,4 +1,4 @@
-package jumper.game.gamelogic.component;
+package jumper.game.gamelogic.component.move;
 
 
 

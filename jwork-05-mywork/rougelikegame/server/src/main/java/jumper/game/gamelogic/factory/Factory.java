@@ -1,7 +1,9 @@
-package org.example.gamelogic.factory;
+/*
+package jumper.game.gamelogic.factory;
 
-import com.badlogic.ashley.core.Engine;
+
 
 public interface Factory {
     public void setEngine(Engine engine);
 }
+*/

@@ -1,4 +1,4 @@
-package jumper.game;
+package jumper.game.gamelogic.manager;
 
 
 import java.util.EnumMap;

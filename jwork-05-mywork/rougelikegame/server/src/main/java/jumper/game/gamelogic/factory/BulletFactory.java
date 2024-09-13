@@ -1,3 +1,4 @@
+/*
 package org.example.gamelogic.factory;
 
 
@@ -26,3 +27,4 @@ public class BulletFactory implements Factory{
         engine.addEntity(bullet);
     }
 }
+*/

@@ -1,13 +1,13 @@
 package jumper.game.gamelogic.system.collision;
 
 import dev.dominion.ecs.api.Entity;
-import jumper.game.gamelogic.component.AttackableComponent;
-import jumper.game.gamelogic.component.DamageComponent;
+import jumper.game.gamelogic.component.health.AttackableComponent;
+import jumper.game.gamelogic.component.health.DamageComponent;
 import jumper.game.gamelogic.component.singleton.CollisionEventManager;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 
-import static jumper.game.SingletonManager.SingletonName.COLLISION_MESSAGE;
+import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
 @RequiredArgsConstructor
 public class CollisionDamageSystem implements Runnable{

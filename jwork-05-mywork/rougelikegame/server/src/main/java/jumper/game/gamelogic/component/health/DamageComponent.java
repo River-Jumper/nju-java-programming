@@ -1,4 +1,4 @@
-package jumper.game.gamelogic.component;
+package jumper.game.gamelogic.component.health;
 
 public class DamageComponent {
     public int damage;

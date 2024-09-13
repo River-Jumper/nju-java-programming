@@ -1,8 +1,7 @@
 package jumper.game.gamelogic.system.health;
 
-import dev.dominion.ecs.api.Dominion;
-import jumper.game.gamelogic.component.DestructionComponent;
-import jumper.game.gamelogic.component.HealthComponent;
+import jumper.game.gamelogic.component.destruction.DestructionComponent;
+import jumper.game.gamelogic.component.health.HealthComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 

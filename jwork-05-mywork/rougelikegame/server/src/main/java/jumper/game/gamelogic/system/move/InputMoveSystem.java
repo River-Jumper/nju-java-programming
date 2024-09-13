@@ -2,6 +2,9 @@
 package jumper.game.gamelogic.system.move;
 
 import dev.dominion.ecs.api.Entity;
+import jumper.game.gamelogic.component.move.InputMoveComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.symbol.PlayerComponent;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 
