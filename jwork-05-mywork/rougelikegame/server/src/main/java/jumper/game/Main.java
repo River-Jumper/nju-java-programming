@@ -1,22 +1,26 @@
 
 package jumper.game;
 
-import com.esotericsoftware.kryonetty.ServerEndpoint;
-import com.esotericsoftware.kryonetty.kryo.KryoNetty;
+
+import com.esotericsoftware.kryonet.Server;
+import jumper.game.gamelogic.manager.InputManager;
+import jumper.game.gamelogic.manager.SingletonManager;
+import jumper.game.gamelogic.system.SystemContext;
+import jumper.game.network.GameServer;
+
+import java.io.IOException;
 
 public class Main {
-    KryoNetty kryoNetty = new KryoNetty()
-            .useLogging()
-            .useExecution()
-            .threadSize(16)
-            .inputSize(4096)
-            .outputSize(4096)
-            .maxOutputSize(-1)
-            .register(
+    public static void main(String[] args) throws IOException {
+        //manager
+        SingletonManager singletonManager = new SingletonManager();
+        InputManager inputManager = new InputManager();
+        //system context
+        //SystemContext systemContext = new SystemContext()
 
-            );
-
-    ServerEndpoint serverEndpoint = new ServerEndpoint(kryoNetty);
+        //server
+        GameServer gameServer = new GameServer(inputManager);
+    }
 }
 
 

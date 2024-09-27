@@ -1,7 +1,7 @@
 package jumper.game.gamelogic.component.symbol;
 
-import network.Frame;
+import network.FrameState;
 
 public class SymbolComponent {
-    public Frame.Symbol symbol;
+    public FrameState.Symbol symbol;
 }

@@ -3,7 +3,7 @@ package network;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Frame {
+public class FrameState {
     public enum Symbol {
         ENEMY,
         PLAYER,

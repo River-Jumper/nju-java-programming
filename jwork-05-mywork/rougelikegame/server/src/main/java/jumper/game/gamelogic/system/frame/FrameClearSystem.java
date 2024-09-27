@@ -8,6 +8,6 @@ public class FrameClearSystem implements Runnable{
     private final SystemContext context;
     @Override
     public void run() {
-        context.frame().frame.clear();
+        context.frameState().frame.clear();
     }
 }

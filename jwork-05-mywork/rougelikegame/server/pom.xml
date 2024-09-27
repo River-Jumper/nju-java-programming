@@ -22,7 +22,13 @@
             <id>jitpack</id>
             <url>https://jitpack.io</url>
         </repository>
+
+        <repository>
+            <id>clojars</id>
+            <url>http://clojars.org/repo/</url>
+        </repository>
     </repositories>
+
 
     <dependencies>
         <dependency>
@@ -38,9 +44,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.EsotericSoftware</groupId>
-            <artifactId>kryonetty</artifactId>
-            <version>master-SNAPSHOT</version>
+            <groupId>com.github.crykn</groupId>
+            <artifactId>kryonet</artifactId>
+            <version>2.22.8</version>
         </dependency>
 
         <dependency>
@@ -48,6 +54,13 @@
             <artifactId>kryo</artifactId>
             <version>5.6.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>kryonet</groupId>
+            <artifactId>kryonet</artifactId>
+            <version>2.21</version>
+        </dependency>
+
     </dependencies>
 
 </project>
