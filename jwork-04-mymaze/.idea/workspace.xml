@@ -5,8 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="847f961c-1f48-4247-9e88-6b3e7b9851bb" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/com/anish/calabashbros/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/anish/calabashbros/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/anish/screen/MazeWorldScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/anish/screen/MazeWorldScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/hs_err_pid1936.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/hs_err_pid26544.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/hs_err_pid9888.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/GameScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/ConnectServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/StartServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/render/FrameBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/render/ImagePool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/ServerStart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/debug/Probe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-03/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-03/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-03/out/production/jwork-03/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-03/out/production/jwork-03/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-03/out/production/jwork-03/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-03/out/production/jwork-03/result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/hs_err_pid25448.log" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/hs_err_pid25448.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/log/clientlog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/CreateServerScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/CreateServerScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/JoinServerScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/JoinServerScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MainMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MainMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MyScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MultiPlayersGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/MultiPlayersGameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/TestScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/TestScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/actor/ActorPositionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/actor/listener/SwitchMenuScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/Screen/actor/listener/TestListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/ClientListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/network/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/render/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/java/jumper/game/render/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/client/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/common/src/main/java/network/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/common/src/main/java/network/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/Start.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/move/MovableComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/move/MovableComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/symbol/PlayerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/symbol/PlayerComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/symbol/SymbolComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/component/symbol/SymbolComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/factory/BulletFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/factory/BulletFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/factory/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/factory/PlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/manager/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/manager/InputManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/SystemContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/SystemContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/BulletCollisionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/BulletCollisionSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/ClearCollisionEventsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/ClearCollisionEventsSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/CollisionDamageSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/CollisionDamageSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/CollisionDetectionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/collision/CollisionDetectionSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/destruct/DestructionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/destruct/DestructionSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/frame/FrameSenderSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/frame/FrameSenderSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/move/BulletEdgeDetectSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/move/BulletEdgeDetectSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/move/TargetMoveSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/move/TargetMoveSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/shoot/InputShootSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/gamelogic/system/shoot/InputShootSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/network/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/network/GameServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/network/SeverListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jwork-05-mywork/rougelikegame/server/src/main/java/jumper/game/network/SeverListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,21 +94,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;maze&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.Maze.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run",
+    "应用程序.Maze.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -108,6 +159,7 @@
       <workItem from="1724990476424" duration="10018000" />
       <workItem from="1725007874804" duration="111000" />
       <workItem from="1725011257756" duration="408000" />
+      <workItem from="1728537947065" duration="1645000" />
     </task>
     <servers />
   </component>
