@@ -20,5 +20,17 @@ public class MovableComponent{
         this.maxSpeedX = xSpeed;
         this.maxSpeedY = ySpeed;
     }
+    public MovableComponent(int xSpeed, int ySpeed, int maxSpeedX, int maxSpeedY) {
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.maxSpeedX = maxSpeedX;
+        this.maxSpeedY = maxSpeedY;
+    }
+    public MovableComponent(float xSpeed, float ySpeed, float maxSpeedX, float maxSpeedY) {
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.maxSpeedX = xSpeed;
+        this.maxSpeedY = ySpeed;
+    }
 }
 

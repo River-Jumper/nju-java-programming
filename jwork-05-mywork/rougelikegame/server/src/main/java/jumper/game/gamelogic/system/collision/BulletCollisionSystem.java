@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
-
+//to destruction bullet
 @RequiredArgsConstructor
 public class BulletCollisionSystem implements Runnable {
     private final SystemContext context;
@@ -25,10 +25,10 @@ public class BulletCollisionSystem implements Runnable {
             Entity entity1 = event.entity1();
             Entity entity2 = event.entity2();
 
-            if (entity1.has(BulletComponent.class)) {
+            if (entity1.has(BulletComponent.class) && (!entity1.has(DestructionComponent.class))) {
                 entity1.add(new DestructionComponent());
             }
-            if (entity2.has(BulletComponent.class)) {
+            if (entity2.has(BulletComponent.class) && (!entity2.has(DestructionComponent.class))) {
                 entity2.add(new DestructionComponent());
             }
         }

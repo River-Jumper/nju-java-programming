@@ -31,7 +31,7 @@ public class CollisionDetectionSystem implements Runnable {
             Circle thisCircle = new Circle(x, y, radius);
 
             for (var other : collisionResults) {
-                if (result != other && !collidedEntities.contains(other.entity())) {
+                if (!result.equals(other) && !collidedEntities.contains(other.entity())) {
                     float otherX = other.comp1().x;
                     float otherY = other.comp1().y;
                     int otherRadius = other.comp2().radius;

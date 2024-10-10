@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
 
-//work after all other System in collision
+//work before all other System in collision
 @RequiredArgsConstructor
 public class ClearCollisionEventsSystem implements Runnable{
     private final SystemContext context;

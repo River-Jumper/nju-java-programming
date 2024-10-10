@@ -1,27 +1,26 @@
-/*
 package jumper.game.gamelogic.factory;
 
-public class PlayerFactory implements Factory {
-    private Engine engine;
+import dev.dominion.ecs.api.Dominion;
+import jumper.game.gamelogic.component.collision.CollisionComponent;
+import jumper.game.gamelogic.component.move.InputMoveComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.move.PositionComponent;
+import jumper.game.gamelogic.component.move.RandomMoveComponent;
+import jumper.game.gamelogic.component.shoot.ShootingComponent;
+import jumper.game.gamelogic.component.symbol.PlayerComponent;
+import jumper.game.gamelogic.component.symbol.SymbolComponent;
+import network.FrameState;
 
-    @Override
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-    public void make(int positionX, int positionY, int speedX, int speedY) {
-        Texture playerTexture = new Texture(Gdx.files.internal("emoji/joker.png"));
-
-        Entity player = new Entity();
-        player.add(new PlayerComponent());
-        player.add(new PositionComponent(positionX, positionY));
-        player.add(new ImageComponent(playerTexture));
-        player.add(new MovableComponent(speedX, speedY));
-        player.add(new CollisionComponent(GameConfig.PlayerRADIUS));
-        player.add(new InputMoveComponent());
-        player.add(new ShootingComponent(GameConfig.ShootINTERVAL, GameConfig.ShootINTERVAL));
-        player.add(new TargetComponent());
-
-        this.engine.addEntity(player);
+public class PlayerFactory {
+    public static void make(Dominion world, int clientID) {
+        world.createEntity(
+                new PositionComponent(600, 300),
+                new SymbolComponent(FrameState.Symbol.PLAYER),
+                new CollisionComponent(20),
+                new MovableComponent(10, 10, 100, 100),
+                new InputMoveComponent(),
+                new ShootingComponent(1, 0),
+                new PlayerComponent(clientID)
+        );
     }
 }
-*/

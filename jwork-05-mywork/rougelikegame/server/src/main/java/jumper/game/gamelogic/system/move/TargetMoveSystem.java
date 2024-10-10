@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class TargetMoveSystem implements Runnable {
-    private SystemContext context;
+    private final SystemContext context;
 
     @Override
     public void run() {

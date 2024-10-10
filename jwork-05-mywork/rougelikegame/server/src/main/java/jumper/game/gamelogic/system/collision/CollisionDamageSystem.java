@@ -23,13 +23,13 @@ public class CollisionDamageSystem implements Runnable{
             Entity entity1 = event.entity1();
             Entity entity2 = event.entity2();
 
-            if (entity1.has(AttackableComponent.class)) {
+            if (entity1.has(AttackableComponent.class) && entity2.has(DamageComponent.class)) {
                 int attack = entity1.get(AttackableComponent.class).attack;
-                event.entity2().add(new DamageComponent(attack));
+                entity2.get(DamageComponent.class).damage += attack;
             }
-            if (entity2.has(AttackableComponent.class)) {
+            if (entity2.has(AttackableComponent.class) && entity1.has(DamageComponent.class)) {
                 int attack = entity2.get(AttackableComponent.class).attack;
-                event.entity1().add(new DamageComponent(attack));
+                entity1.get(DamageComponent.class).damage += attack;
             }
         }
     }

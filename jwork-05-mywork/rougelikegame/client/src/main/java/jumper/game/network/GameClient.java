@@ -8,16 +8,17 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class GameClient {
-    Client client;
+    public Client client;
     public GameClient() throws IOException {
         this.client = new Client();
         Network.register(this.client);
-        client.addListener(new ClientListener());
+        this.client.start();
+
 
         String localHost = "127.0.0.1";
         String serverHost = "192.168.1.121";
 
-        client.connect(5000, localHost, Network.port);
+        client.connect(500000, localHost, Network.port);
     }
 
     public static void main(String[] args) throws UnknownHostException {

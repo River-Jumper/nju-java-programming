@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class MultiPlayersGameScreen extends MenuScreen {
+public class MultiPlayersGameScreen extends MyScreen {
 
     public MultiPlayersGameScreen(Game game) {
         super(game);

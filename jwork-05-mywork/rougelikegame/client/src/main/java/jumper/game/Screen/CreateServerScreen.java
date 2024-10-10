@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class CreateServerScreen extends MenuScreen{
+public class CreateServerScreen extends MyScreen {
     public CreateServerScreen(Game game) {
         super(game);
     }
@@ -27,6 +27,14 @@ public class CreateServerScreen extends MenuScreen{
                 System.out.println(port);
             }
         });
+        TextButton returnButton = new TextButton("Return", skin);
+        returnButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                dispose();
+                game.setScreen(new MultiPlayersGameScreen(game));
+            }
+        });
 
         Table table = new Table();
         table.setFillParent(true);
@@ -34,6 +42,8 @@ public class CreateServerScreen extends MenuScreen{
         table.add(portText).width(150).pad(10);
         table.row().center();
         table.add(createButton).width(80).pad(10);
+        table.row().center();
+        table.add(returnButton).width(80).pad(10);
 
         stage.addActor(table);
     }

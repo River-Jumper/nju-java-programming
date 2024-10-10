@@ -4,15 +4,22 @@ package jumper.game.Screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import jumper.game.DesktopLauncher;
-import jumper.game.Screen.actor.ActorPositionManager;
+import jumper.game.ServerStart;
+import jumper.game.network.ClientListener;
+import jumper.game.network.GameClient;
 
-public class MainMenuScreen extends MenuScreen {
+import java.io.IOException;
+
+
+public class MainMenuScreen extends MyScreen {
 
     public MainMenuScreen(Game game) {
         super(game);
@@ -28,7 +35,26 @@ public class MainMenuScreen extends MenuScreen {
         singlePlayerGameButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Haha, you foolish");
+                dispose();
+                GameScreen gameScreen = new GameScreen(game);
+
+
+                ServerStart serverStart = new ServerStart();
+                try {
+                    serverStart.start();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                try {
+                    GameClient gameClient = new GameClient();
+                    gameClient.client.addListener(new ClientListener(gameScreen));
+                    gameScreen.setGameClient(gameClient);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                game.setScreen(gameScreen);
             }
         });
 
@@ -42,8 +68,20 @@ public class MainMenuScreen extends MenuScreen {
         });
 
         TextButton playBackButton = new TextButton("Playback", skin);
+        playBackButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Haha, you foolish");
+            }
+        });
 
         TextButton settingsButton = new TextButton("Settings", skin);
+        settingsButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Haha, you foolish");
+            }
+        });
 
 
         Table table = new Table();
@@ -58,11 +96,10 @@ public class MainMenuScreen extends MenuScreen {
         table.add(settingsButton).width(80).pad(10);
 
 
-
         //actor in stage
         stage.addActor(table);
-
     }
+
 /*
     @Override
     public void resize(int i, int i1) {

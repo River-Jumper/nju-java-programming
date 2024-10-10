@@ -9,12 +9,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 
-public class MenuScreen extends ScreenAdapter {
+public class MyScreen extends ScreenAdapter {
     protected final Game game;
     protected Stage stage;
     protected Image backgroundImage;
 
-    public MenuScreen(Game game) {
+    public MyScreen(Game game) {
         this.game = game;
         stageConfig();
     }
@@ -30,18 +30,18 @@ public class MenuScreen extends ScreenAdapter {
         backgroundImage = new Image(backgroundTexture);
         backgroundImage.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+
         stage.addActor(backgroundImage);
+    }
+
+    protected void setBackgroundImage(Image backgroundImage) {
+        this.backgroundImage = backgroundImage;
     }
 
     @Override
     public void render(float deltaTime) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.draw();
-    }
-
-    public void switchScreen(ScreenAdapter screen) {
-        game.setScreen(screen);
-        //dispose();
     }
 
     @Override

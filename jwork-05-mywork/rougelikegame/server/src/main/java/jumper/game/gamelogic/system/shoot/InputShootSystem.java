@@ -18,7 +18,8 @@ import network.MouseState;
 
 @RequiredArgsConstructor
 public class InputShootSystem implements Runnable {
-    private SystemContext context;
+
+    private final SystemContext context;
 
     @Override
     public void run() {
@@ -29,10 +30,10 @@ public class InputShootSystem implements Runnable {
                     int radius = result.comp4().radius;
                     int clientID = result.comp1().clientID;
 
-                    shoot.shootInterval -= GameConfig.DELTA_TIME;
+                    shoot.currentInterval -= GameConfig.DELTA_TIME;
                     MouseState mouseState = context.inputManager().getMouseState(clientID);
 
-                    if (shoot.shootInterval <= 0 && mouseState != null) {
+                    if (shoot.currentInterval <= 0 && mouseState != null) {
                         if (mouseState.isClick()) {
                             int mouseX = (int) mouseState.x();
                             int mouseY = (int) mouseState.y();
@@ -41,13 +42,18 @@ public class InputShootSystem implements Runnable {
                             float deltaY = mouseY - position.y;
                             float deltaZ = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                            int speedX = (int) ((deltaX / deltaZ) * GameConfig.BULLET_MAX_SPEED);
-                            int speedY = (int) ((deltaY / deltaZ) * GameConfig.BULLET_MAX_SPEED);
+                            float sinX = deltaX / deltaZ;
+                            float cosX = deltaY / deltaZ;
 
-                            int positionX = (int) ((deltaX / deltaZ) * (radius + 10) + position.x);
-                            int positionY = (int) ((deltaY / deltaZ) * (radius + 10) + position.y);
+                            int speedX = (int) (sinX * GameConfig.BULLET_MAX_SPEED);
+                            int speedY = (int) (cosX * GameConfig.BULLET_MAX_SPEED);
+
+                            int positionX = (int) (sinX * (radius * 2) + position.x);
+                            int positionY = (int) (cosX * (radius * 2) + position.y);
 
                             BulletFactory.make(context.world(), positionX, positionY, speedX, speedY);
+
+                            shoot.currentInterval = shoot.shootInterval;
                         }
                     }
 
