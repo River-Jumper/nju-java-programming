@@ -1,0 +1,71 @@
+@startuml
+
+class Thing {
+    World world;
+    int getX();
+    Tile<? extends Thing> tile;
+    int getY();
+    void setTile(Tile<? extends Thing> tile);
+    Thing(Color color, char glyph, World world);
+    private final Color color;
+    public Color getColor();
+    private final char glyph;
+    public char getGlyph();
+}
+
+class Tile<T extends Thing> {
+    private T thing;
+    private int xPos;
+    private int yPos;
+    public T getThing();
+    public void setThing(T thing);
+    public int getxPos();
+    public void setxPos(int xPos);
+    public int getyPos();
+    public void setyPos(int yPos);
+    public Tile();
+    public Tile(int xPos, int yPos);
+}
+
+class Wall extends Thing {
+    public Wall(World world);
+}
+
+class LimitBlock extends Thing{
+    public LimitBlock(World world);
+}
+
+class Floor extends Thing {
+    public Floor(World world);
+}
+
+class Creature extends Thing {
+    Creature(Color color, char glyph, World world);
+    public void moveTo(int xPos, int yPos);
+}
+
+class Calabash extends Creature implements Comparable<Calabash> {
+    private int rank;
+    public Calabash(Color color, int rank, World world);
+    public int getRank();
+    public String toString();
+    public int compareTo(Calabash o);
+    public void swap(Calabash another);
+}
+
+interface Sorter<T extends Comparable<T>> {
+    public void load(T[] elements);
+    public void sort();
+    public String getPlan();
+}
+
+class BubbleSorter<T extends Comparable<T>> implements Sorter<T> {
+    private T[] a;
+    public void load(T[] a);
+    private void swap(int i, int j);
+    private String plan = "";
+    public void sort();
+    public String getPlan();
+}
+
+@enduml

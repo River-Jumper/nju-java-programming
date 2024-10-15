@@ -1,0 +1,42 @@
+@startuml
+
+interface Screen {
+    public void displayOutput(AsciiPanel terminal);
+    public Screen respondToUserInput(KeyEvent key);
+}
+
+class WorldScreen implements Screen {
+    private World world;
+    private Calabash[] bros;
+    String[] sortSteps;
+    public WorldScreen();
+    private String[] parsePlan(String plan);
+    private void execute(Calabash[] bros, String step);
+    private Calabash getBroByRank(Calabash[] bros, int rank);
+    @Override
+    public void displayOutput(AsciiPanel terminal);
+    int i = 0;
+    @Override
+    public Screen respondToUserInput(KeyEvent key);
+}
+
+class MazeWorldScreen implements Screen {
+    private World world;
+    private byte[][] maze;
+    private Creature mazeWalker;
+    private Thing exit;
+    private Boolean reachedExit;
+    public MazeWorldScreen();
+    private void makeMaze(Creature creature, Thing exit);
+    private void moveLeft();
+    private void moveRight();
+    private void moveUp();
+    private void moveDown();
+    private void arriveExit();
+    private void swapThingInWorld(Thing a, Thing b);
+    private boolean isMovable(Thing closedObject);
+    public void displayOutput(AsciiPanel terminal);
+    public Screen respondToUserInput(KeyEvent key);
+}
+
+@enduml
