@@ -7,11 +7,14 @@ import jumper.game.gamelogic.component.singleton.CollisionEventManager;
 import jumper.game.gamelogic.system.SystemContext;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Random;
+
 import static jumper.game.gamelogic.manager.SingletonManager.SingletonName.COLLISION_MESSAGE;
 
 @RequiredArgsConstructor
 public class CollisionMoveSystem implements Runnable {
     private final SystemContext context;
+    private Random random = new Random();
 
 
     @Override
@@ -23,7 +26,7 @@ public class CollisionMoveSystem implements Runnable {
         while (collisionEvents != null  && !collisionEvents.isEmpty()) {
             var event = collisionEvents.poll();
             //deal with speed
-            dealWithSpeed(event.entity1().get(MovableComponent.class), event.entity2().get(MovableComponent.class));
+            //dealWithSpeedRandomly(event.entity1().get(MovableComponent.class), event.entity2().get(MovableComponent.class));
         }
     }
 
@@ -39,6 +42,14 @@ public class CollisionMoveSystem implements Runnable {
         movement2.xSpeed *= -((float) 1 /2);
         movement2.ySpeed *= -((float) 1 /2);
     }
+    //Opposite speeds and lose to 1/2
+    private void dealWithSpeedRandomly(MovableComponent movement1, MovableComponent movement2) {
+        movement1.xSpeed *= -((float) this.random.nextDouble());
+        movement1.ySpeed *= -((float) this.random.nextDouble());
+        movement2.xSpeed *= -((float) this.random.nextDouble());
+        movement2.ySpeed *= -((float) this.random.nextDouble());
+    }
+
     //仅仅在速度方向上做阻挠
     private void dealWithSpeed(Entity thisEntity, Entity otherEntity) {
         PositionComponent thisPosition = thisEntity.get(PositionComponent.class);

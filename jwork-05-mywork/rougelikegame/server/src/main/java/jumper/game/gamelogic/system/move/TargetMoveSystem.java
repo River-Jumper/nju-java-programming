@@ -15,6 +15,7 @@ public class TargetMoveSystem implements Runnable {
     @Override
     public void run() {
 
+
         var targetResults = context.world().findCompositionsWith(TargetComponent.class, PositionComponent.class);
 
         context.world().findCompositionsWith(TargetMoveComponent.class, MovableComponent.class, PositionComponent.class)

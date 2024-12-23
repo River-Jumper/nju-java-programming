@@ -14,5 +14,8 @@ public class Network {
         kryo.register(FrameState.class);
         kryo.register(KeyboardState.class);
         kryo.register(MouseState.class);
+        kryo.register(PauseControl.class);
+        kryo.register(Start.class);
+        kryo.register(PlayerNum.class);
     }
 }

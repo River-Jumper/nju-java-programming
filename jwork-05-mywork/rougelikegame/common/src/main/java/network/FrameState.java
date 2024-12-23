@@ -8,6 +8,7 @@ public class FrameState {
         ENEMY,
         PLAYER,
         BULLET,
+        GIFT
     }
 
     public Map<Position, Thing> frame = new HashMap<>();

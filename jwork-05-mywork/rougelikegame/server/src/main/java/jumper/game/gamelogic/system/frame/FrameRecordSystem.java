@@ -14,6 +14,8 @@ public class FrameRecordSystem implements Runnable{
 
     @Override
     public void run() {
+
+
         context.world().findCompositionsWith(SymbolComponent.class, PositionComponent.class, CollisionComponent.class)
                 .forEach(result -> {
                     FrameState.Symbol symbol = result.comp1().symbol;

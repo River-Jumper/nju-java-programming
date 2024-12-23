@@ -1,33 +1,37 @@
-/*
-package org.example.gamelogic.factory;
+package jumper.game.gamelogic.factory;
 
-import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import org.example.GameConfig;
-import org.example.gamelogic.component.*;
+import dev.dominion.ecs.api.Dominion;
+import jumper.game.GameConfig;
+import jumper.game.gamelogic.component.collision.CollisionComponent;
+import jumper.game.gamelogic.component.health.DamageComponent;
+import jumper.game.gamelogic.component.health.HealthComponent;
+import jumper.game.gamelogic.component.move.InputMoveComponent;
+import jumper.game.gamelogic.component.move.MovableComponent;
+import jumper.game.gamelogic.component.move.PositionComponent;
+import jumper.game.gamelogic.component.move.RandomMoveComponent;
+import jumper.game.gamelogic.component.shoot.ShootingComponent;
+import jumper.game.gamelogic.component.symbol.EnemyComponent;
+import jumper.game.gamelogic.component.symbol.PlayerComponent;
+import jumper.game.gamelogic.component.symbol.SymbolComponent;
+import network.FrameState;
 
-public class EnemyFactory implements Factory{
-    private Engine engine;
+import java.util.Random;
 
-    @Override
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-    public void make(int positionX, int positionY, int speedX, int speedY) {
-        Texture enemyTexture = new Texture(Gdx.files.internal("emoji/ghost.png"));
+public class EnemyFactory {
+    public static void make(Dominion world, int positionX, int positionY,
+                            int maxSpeedX, int maxSpeedY, float maxMoveInterval,
+                            int health) {
+        Random random = new Random();
+        world.createEntity(
+                new EnemyComponent(),
+                new PositionComponent(positionX, positionY),
+                new SymbolComponent(FrameState.Symbol.ENEMY),
+                new CollisionComponent(GameConfig.ENEMY_RADIUS),
+                new MovableComponent(0, 0, maxSpeedX, maxSpeedY),
+                new RandomMoveComponent(maxMoveInterval, random.nextFloat() * maxMoveInterval),
+                new HealthComponent(health),
+                new DamageComponent()
+        );
 
-        Entity enemy = new Entity();
-        enemy.add(new EnemyComponent());
-        enemy.add(new PositionComponent(positionX, positionY));
-        enemy.add(new ImageComponent(enemyTexture));
-        enemy.add(new MovableComponent(speedX, speedY));
-        enemy.add(new CollisionComponent(GameConfig.EnemyRADIUS));
-        enemy.add(new TargetMoveComponent(GameConfig.EnemyTargetDISTANCE));
-        enemy.add(new RandomMoveComponent(1, 0));
-
-        this.engine.addEntity(enemy);
     }
 }
-*/

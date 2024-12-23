@@ -17,6 +17,8 @@ public class InputMoveSystem implements Runnable {
 
     @Override
     public void run() {
+
+
         context.world().findCompositionsWith(InputMoveComponent.class, MovableComponent.class, PlayerComponent.class)
                 .forEach(result -> {
                     KeyboardState keyboardState = context.inputManager().

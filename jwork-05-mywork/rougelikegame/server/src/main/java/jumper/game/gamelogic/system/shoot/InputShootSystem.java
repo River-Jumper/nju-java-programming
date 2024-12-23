@@ -23,7 +23,8 @@ public class InputShootSystem implements Runnable {
 
     @Override
     public void run() {
-        context.world().findCompositionsWith(PlayerComponent.class, ShootingComponent.class, PositionComponent.class, CollisionComponent.class)
+        context.world().findCompositionsWith(PlayerComponent.class, ShootingComponent.class,
+                        PositionComponent.class, CollisionComponent.class, AttackableComponent.class)
                 .forEach(result -> {
                     ShootingComponent shoot = result.comp2();
                     PositionComponent position = result.comp3();
@@ -51,7 +52,8 @@ public class InputShootSystem implements Runnable {
                             int positionX = (int) (sinX * (radius * 2) + position.x);
                             int positionY = (int) (cosX * (radius * 2) + position.y);
 
-                            BulletFactory.make(context.world(), positionX, positionY, speedX, speedY);
+                            BulletFactory.make(context.world(), positionX, positionY,
+                                    speedX, speedY, result.comp5().attack);
 
                             shoot.currentInterval = shoot.shootInterval;
                         }

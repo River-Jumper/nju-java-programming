@@ -3,6 +3,7 @@ package jumper.game.gamelogic.manager;
 import lombok.extern.log4j.Log4j2;
 import network.KeyboardState;
 import network.MouseState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,10 +40,18 @@ public class InputManager {
             }
         }
     }
+    @Nullable
     public MouseState getMouseState(int clientID) {
-        return mouseStateMap.get(clientID).get();
+        if (this.mouseStateMap.get(clientID) != null) {
+            return this.mouseStateMap.get(clientID).get();
+        }
+        return null;
     }
+    @Nullable
     public KeyboardState getKeyboardState(int clientID) {
-        return keyboardStateMap.get(clientID).get();
+        if (this.keyboardStateMap.get(clientID) != null) {
+            return this.keyboardStateMap.get(clientID).get();
+        }
+        return null;
     }
 }

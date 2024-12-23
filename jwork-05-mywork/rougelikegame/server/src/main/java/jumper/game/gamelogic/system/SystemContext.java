@@ -11,5 +11,5 @@ import network.FrameState;
 
 public record SystemContext(Dominion world, SingletonManager singletonManager,
                             FrameState frameState, InputManager inputManager,
-                            GameServer gameServer) {
+                            GameServer gameServer, WaveState waveState) {
 }

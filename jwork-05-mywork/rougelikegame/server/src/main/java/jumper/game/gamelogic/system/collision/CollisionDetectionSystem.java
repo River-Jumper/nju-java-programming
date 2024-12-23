@@ -21,8 +21,9 @@ public class CollisionDetectionSystem implements Runnable {
 
     @Override
     public void run() {
+
         Set<Entity> collidedEntities = new HashSet<>();
-        var collisionResults = context.world().findEntitiesWith(PositionComponent.class, CollisionComponent.class);
+        var collisionResults = context.world().findEntitiesWith(PositionComponent.class, CollisionComponent.class).stream().toList();
 
         for (var result : collisionResults) {
             float x = result.comp1().x;

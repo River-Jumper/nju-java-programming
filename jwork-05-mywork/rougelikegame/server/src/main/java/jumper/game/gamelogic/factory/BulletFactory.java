@@ -13,13 +13,13 @@ import jumper.game.gamelogic.component.symbol.SymbolComponent;
 import network.FrameState;
 
 public class BulletFactory{
-    public static void make(Dominion world, int positionX, int positionY, int speedX, int speedY) {
+    public static void make(Dominion world, int positionX, int positionY, int speedX, int speedY, int attack) {
         world.createEntity(
                 new BulletComponent(),
-                new CollisionComponent(15),
+                new CollisionComponent(GameConfig.BULLET_RADIUS),
                 new PositionComponent(positionX, positionY),
                 new MovableComponent(speedX, speedY),
-                new AttackableComponent(GameConfig.BULLET_ATTACK),
+                new AttackableComponent(attack),
                 new SymbolComponent(FrameState.Symbol.BULLET)
         );
     }

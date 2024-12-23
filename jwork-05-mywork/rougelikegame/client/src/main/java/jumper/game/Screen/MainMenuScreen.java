@@ -15,6 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import jumper.game.ServerStart;
 import jumper.game.network.ClientListener;
 import jumper.game.network.GameClient;
+import jumper.game.playback.ClearPlaybackRecord;
+import network.Network;
+import network.Start;
 
 import java.io.IOException;
 
@@ -35,26 +38,28 @@ public class MainMenuScreen extends MyScreen {
         singlePlayerGameButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                //prepare: create gameScreen
                 dispose();
                 GameScreen gameScreen = new GameScreen(game);
 
-
-                ServerStart serverStart = new ServerStart();
                 try {
-                    serverStart.start();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                try {
+                    //prepare: create gameClient
                     GameClient gameClient = new GameClient();
-                    gameClient.client.addListener(new ClientListener(gameScreen));
-                    gameScreen.setGameClient(gameClient);
+                    gameClient.client.addListener(new ClientListener(gameScreen, gameClient));
+                    //prepare: prepare server
+                    ServerStart serverStart = new ServerStart();
+                    serverStart.start();
+                    //connect
+                    gameClient.connect("127.0.0.1");
+                    // first delete playback record
+                    ClearPlaybackRecord.clear();
+                    // then change screen to GameScreen
+                    game.setScreen(gameScreen);
+                    //start server
+                    gameClient.client.sendTCP(new Start());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
-                game.setScreen(gameScreen);
             }
         });
 
@@ -71,7 +76,8 @@ public class MainMenuScreen extends MyScreen {
         playBackButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Haha, you foolish");
+                dispose();
+                game.setScreen(new PlaybackScreen(game));
             }
         });
 

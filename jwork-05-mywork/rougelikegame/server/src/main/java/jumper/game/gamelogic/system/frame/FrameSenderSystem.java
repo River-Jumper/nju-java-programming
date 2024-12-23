@@ -15,6 +15,8 @@ public class FrameSenderSystem implements Runnable{
 
     @Override
     public void run() {
+
+
         FrameState frameState = context.frameState();
         log.info("send frame" + frameState.frame.keySet());
         context.gameServer().server.sendToAllTCP(frameState);

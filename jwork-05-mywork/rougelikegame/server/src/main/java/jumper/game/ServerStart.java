@@ -3,21 +3,15 @@ package jumper.game;
 
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
-import jumper.game.gamelogic.component.collision.CollisionComponent;
-import jumper.game.gamelogic.component.health.HealthComponent;
-import jumper.game.gamelogic.component.move.MovableComponent;
-import jumper.game.gamelogic.component.move.PositionComponent;
-import jumper.game.gamelogic.component.move.RandomMoveComponent;
-import jumper.game.gamelogic.component.shoot.ShootingComponent;
 import jumper.game.gamelogic.component.singleton.CollisionEventManager;
-import jumper.game.gamelogic.component.symbol.PlayerComponent;
-import jumper.game.gamelogic.component.symbol.SymbolComponent;
+import jumper.game.gamelogic.factory.EnemyFactory;
 import jumper.game.gamelogic.manager.InputManager;
 import jumper.game.gamelogic.manager.SingletonManager;
 import jumper.game.gamelogic.system.SystemContext;
+import jumper.game.gamelogic.system.WaveState;
 import jumper.game.gamelogic.system.collision.*;
-import jumper.game.gamelogic.system.debug.Probe;
 import jumper.game.gamelogic.system.destruct.DestructionSystem;
+import jumper.game.gamelogic.system.destruct.TimeToDestructSystem;
 import jumper.game.gamelogic.system.frame.FrameClearSystem;
 import jumper.game.gamelogic.system.frame.FrameRecordSystem;
 import jumper.game.gamelogic.system.frame.FrameSenderSystem;
@@ -25,6 +19,9 @@ import jumper.game.gamelogic.system.health.DamageSystem;
 import jumper.game.gamelogic.system.health.HealthSystem;
 import jumper.game.gamelogic.system.move.*;
 import jumper.game.gamelogic.system.shoot.InputShootSystem;
+import jumper.game.gamelogic.system.wave.EnemyWaveSystem;
+import jumper.game.gamelogic.system.wave.GiftWaveSystem;
+import jumper.game.gamelogic.system.wave.WaveChangeSystem;
 import jumper.game.network.GameServer;
 import lombok.extern.log4j.Log4j2;
 import network.FrameState;
@@ -47,28 +44,30 @@ public class ServerStart {
 
         //world
         Dominion world = Dominion.create();
-        makeEntity(world);
+        //makeEntity(world);
 
         //server
         GameServer gameServer = new GameServer();
 
         //system context
         SystemContext context = new SystemContext(world,
-                singletonManager, frameState, inputManager, gameServer);
-
-        gameServer.setListener(context);
+                singletonManager, frameState, inputManager,
+                gameServer, new WaveState());
 
         Scheduler scheduler = world.createScheduler();
         addSystemIntoScheduler(scheduler, context);
 
+        gameServer.setListener(context, scheduler);
+
         //FPS
-        scheduler.tickAtFixedRate(60);
-
-
+        //scheduler.tickAtFixedRate(60);
     }
 
     //add system
     private static void addSystemIntoScheduler(Scheduler scheduler, SystemContext context) {
+        scheduler.schedule(new GiftWaveSystem(context));
+        scheduler.schedule(new EnemyWaveSystem(context));
+        scheduler.schedule(new WaveChangeSystem(context));
         //level 1
         scheduler.parallelSchedule(new ClearCollisionEventsSystem(context),
                 new FrameClearSystem(context));
@@ -78,6 +77,7 @@ public class ServerStart {
         //level 3
         scheduler.parallelSchedule(new BulletCollisionSystem(context),
                 new CollisionDamageSystem(context));
+        scheduler.schedule(new BuffCollisionSystem(context));
 
         //scheduler.schedule(new Probe(context));
         //level 4
@@ -100,6 +100,7 @@ public class ServerStart {
         //level 10
         scheduler.schedule(new BulletEdgeDetectSystem(context));
         //level 11
+        scheduler.schedule(new TimeToDestructSystem(context));
         scheduler.schedule(new DestructionSystem(context));
         //level 12
         scheduler.schedule(new FrameRecordSystem(context));
@@ -110,13 +111,17 @@ public class ServerStart {
     //make entity
     private static void makeEntity(Dominion world) {
         //for example
+        /*
         world.createEntity(
                 new PositionComponent(900, 500),
                 new SymbolComponent(FrameState.Symbol.ENEMY),
-                new CollisionComponent(20),
+                new CollisionComponent(25),
                 new MovableComponent(10, 10, 100, 100),
                 new RandomMoveComponent(2)
         );
+        */
+        EnemyFactory.make(world, 900, 500,
+                100, 100, 1, 3);
     }
 }
 

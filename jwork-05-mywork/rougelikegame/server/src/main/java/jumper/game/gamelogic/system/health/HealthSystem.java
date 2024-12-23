@@ -13,13 +13,15 @@ public class HealthSystem implements Runnable {
 
     @Override
     public void run() {
+
+
         context.world().findEntitiesWith(HealthComponent.class)
                 .forEach(result -> {
                     HealthComponent healthComponent = result.comp();
                     if (healthComponent.currentHealth > healthComponent.maxHealth) {
                         healthComponent.currentHealth = healthComponent.maxHealth;
                     }
-                    if (healthComponent.currentHealth <= 0) {
+                    if (healthComponent.currentHealth <= 0 && !result.entity().has(DestructionComponent.class)) {
                         result.entity().add(new DestructionComponent());
                     }
                 });

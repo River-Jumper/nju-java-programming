@@ -1,5 +1,7 @@
 package jumper.game.network;
 
+import com.badlogic.gdx.Screen;
+import jumper.game.Screen.MyScreen;
 import network.Network;
 import com.esotericsoftware.kryonet.Client;
 
@@ -13,12 +15,10 @@ public class GameClient {
         this.client = new Client();
         Network.register(this.client);
         this.client.start();
+    }
 
-
-        String localHost = "127.0.0.1";
-        String serverHost = "192.168.1.121";
-
-        client.connect(500000, localHost, Network.port);
+    public void connect(String ip) throws IOException {
+        client.connect(500000, ip, Network.port);
     }
 
     public static void main(String[] args) throws UnknownHostException {

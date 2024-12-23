@@ -15,6 +15,7 @@ public class DamageSystem implements Runnable{
         context.world().findCompositionsWith(DamageComponent.class, HealthComponent.class)
                 .forEach(result -> {
                     int damage = result.comp1().damage;
+                    result.comp1().damage = 0;
                     result.comp2().currentHealth -= damage;
                 });
     }

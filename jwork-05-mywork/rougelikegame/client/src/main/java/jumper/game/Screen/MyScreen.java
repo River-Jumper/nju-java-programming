@@ -7,10 +7,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import jumper.game.network.GameClient;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
-
+@Log4j2
 public class MyScreen extends ScreenAdapter {
-    protected final Game game;
+    @Setter
+    public GameClient gameClient;
+    public final Game game;
     protected Stage stage;
     protected Image backgroundImage;
 
@@ -30,12 +35,13 @@ public class MyScreen extends ScreenAdapter {
         backgroundImage = new Image(backgroundTexture);
         backgroundImage.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-
         stage.addActor(backgroundImage);
     }
 
     protected void setBackgroundImage(Image backgroundImage) {
         this.backgroundImage = backgroundImage;
+        stage.addActor(this.backgroundImage);
+        log.info("change background");
     }
 
     @Override

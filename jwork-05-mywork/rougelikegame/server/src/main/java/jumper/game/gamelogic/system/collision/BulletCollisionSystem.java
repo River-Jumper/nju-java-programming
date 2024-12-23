@@ -17,6 +17,8 @@ public class BulletCollisionSystem implements Runnable {
 
     @Override
     public void run() {
+
+
         CollisionEventManager collisionEventManager = context.singletonManager().getSingleton(COLLISION_MESSAGE);
 
         var collisionEvents = collisionEventManager.getEventWith(BulletComponent.class);

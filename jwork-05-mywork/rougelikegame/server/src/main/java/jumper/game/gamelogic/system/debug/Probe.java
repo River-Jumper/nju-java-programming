@@ -12,6 +12,8 @@ public class Probe implements Runnable {
     private final SystemContext context;
     @Override
     public void run() {
+
+
         context.world().findEntitiesWith(MovableComponent.class)
                 .forEach(result -> {
                     System.out.printf("xSpeed = %f, ySpeed = %f", result.comp().xSpeed, result.comp().ySpeed);

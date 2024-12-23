@@ -16,6 +16,8 @@ public class BulletEdgeDetectSystem implements Runnable{
     private final SystemContext context;
     @Override
     public void run() {
+
+
         context.world().findEntitiesWith(BulletComponent.class, CollisionComponent.class, PositionComponent.class)
                 .forEach(result -> {
                     if (edgeDetection(result.comp3(), result.comp2().radius) && (!result.entity().has(DestructionComponent.class))) {
